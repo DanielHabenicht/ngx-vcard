@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { NgxVcardComponent } from './ngx-vcard.component';
+import { DownloadVCardDirective } from './download-vcard.directive';
 
 @NgModule({
-  imports: [
-  ],
-  declarations: [NgxVcardComponent],
-  exports: [NgxVcardComponent]
+  imports: [],
+  declarations: [DownloadVCardDirective],
+  exports: [DownloadVCardDirective]
 })
 export class NgxVcardModule { }
