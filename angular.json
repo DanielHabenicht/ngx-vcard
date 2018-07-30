@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "ngx-vcard": {
+      "root": "projects/ngx-vcard",
+      "sourceRoot": "projects/ngx-vcard/src",
+      "projectType": "library",
+      "prefix": "vcd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-vcard/tsconfig.lib.json",
+            "project": "projects/ngx-vcard/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-vcard/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-vcard/src/test.ts",
+            "tsConfig": "projects/ngx-vcard/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-vcard/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-vcard/tsconfig.lib.json",
+              "projects/ngx-vcard/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-vcard-app"
