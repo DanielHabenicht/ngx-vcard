@@ -1,0 +1,29 @@
+language: node_js
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+notifications:
+  email: false
+node_js:
+  - stable
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+  - npm prune
+script:
+  - npm run test
+  - npm run e2e
+  - npm run package
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
