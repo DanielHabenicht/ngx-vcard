@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build:app": "ng build",
     "build:lib": "ng build --prod ngx-vcard",
-    "test": "ng test && ng test ngx-vcard",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e ",
     "commit": "git-cz",
