@@ -19,6 +19,7 @@ before_script:
   - sleep 3
   - npm prune
 script:
+  - npm run build:lib
   - npm run test
   - npm run e2e
   - npm run package
