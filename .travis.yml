@@ -7,7 +7,6 @@ addons:
       - google-chrome-stable
 cache:
   directories:
-    - node_modules
     - ~/.npm
 notifications:
   email: false
