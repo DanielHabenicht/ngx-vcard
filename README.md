@@ -1,36 +1,37 @@
-# NgxVcardApp
+[![npm version](https://badge.fury.io/js/ngx-vcard.svg)](https://badge.fury.io/js/ngx-vcard)
+[![Build Status](https://travis-ci.org/DanielHabenicht/ngx-vcard.svg?branch=master)](https://travis-ci.org/DanielHabenicht/ngx-vcard)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/DanielHabenicht/ngx-propagation-stop.svg)](https://greenkeeper.io/)
 
-Almost fully RFC compliant.
+# ngx-vcard
+
+Almost fully RFC compliant vCard Formatter, that also can download the generated vCard.
 Outputs VCard version 4.
 Maybe other version will be supported.
 
 If you want to have another Property, please open up an issue or even better provide a PR. ;)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
+## Installation
 
-## Development server
+1.  Install from npm
+    ```bash
+    $ npm install ngx-vcard --save
+    ```
+2.  Import in app.module.ts:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    ```typescript
+    import { NgxVcardModule } from "ngx-vcard";
 
-## Code scaffolding
+    @NgModule({
+      imports: [NgxVcardModule]
+    })
+    export class AppModule {}
+    ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to use
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- TODO: Add .ts File example
+- TODO: Add directive example
 
 ## Mentions
 
