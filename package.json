@@ -68,8 +68,6 @@
     "url": "https://github.com/DanielHabenicht/ngx-vcard.git"
   },
   "release": {
-    "release": {
-      "pkgRoot": "dist/ngx-vcard"
-    }
+    "pkgRoot": "dist/ngx-vcard"
   }
 }
