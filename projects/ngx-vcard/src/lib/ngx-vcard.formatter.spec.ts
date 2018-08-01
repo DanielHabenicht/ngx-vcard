@@ -2,7 +2,7 @@ import { VCardFormatter, getMajorVersion } from './ngx-vcard.formatter';
 import { VCard } from './types/vCard';
 
 describe('NgxVcardFormatter', () => {
-  it('default test', () => {
+  xit('default test', () => {
     const vCard: VCard = {
       version: '3.0',
       name: { firstNames: 'John', lastNames: 'Doe' },
