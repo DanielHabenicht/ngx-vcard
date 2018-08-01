@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e ",
     "commit": "git-cz",
-    "package": "npm run build_lib && cd dist/ngx-vcard && npm pack",
+    "package": "npm run build:lib && cd dist/ngx-vcard && npm pack",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
