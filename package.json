@@ -14,7 +14,7 @@
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^6.1.0",
     "@angular/common": "^6.1.0",
@@ -66,5 +66,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/DanielHabenicht/ngx-vcard.git"
+  },
+  "release": {
+    "release": {
+      "pkgRoot": "dist/ngx-vcard"
+    }
   }
 }
