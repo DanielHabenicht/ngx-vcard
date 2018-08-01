@@ -1,10 +1,25 @@
 {
   "name": "ngx-vcard",
   "version": "0.0.1",
+  "description": "Generate an RFC compliant vCard and download it.",
   "keywords": [
     "angular",
     "vCard"
   ],
+  "homepage": "https://github.com/DanielHabenicht/ngx-vcard",
+  "bugs": {
+    "url": "https://github.com/DanielHabenicht/ngx-vcard/issues"
+  },
+  "author": {
+    "name": "Daniel Habenicht",
+    "email": "daniel-habenicht@aquiver.de",
+    "url": "https://www.aquiver.de"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DanielHabenicht/ngx-vcard"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
