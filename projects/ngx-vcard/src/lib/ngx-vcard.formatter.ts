@@ -420,7 +420,7 @@ function YYYYMMDD(date: Date): string {
 export function getMajorVersion(version: string): number {
   const majorVersionString = version ? version.slice(0, 1) : '4';
   if (!isNaN(+majorVersionString)) {
-    return parseInt(majorVersionString);
+    return Number.parseInt(majorVersionString);
   }
   return 4;
 }
