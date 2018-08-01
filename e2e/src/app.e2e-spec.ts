@@ -16,7 +16,7 @@ describe('workspace-project App', () => {
   it('should download the vCard File', () => {
     const path = require('path');
     const downloadsPath = path.resolve(__dirname, './');
-    const absFilePath = (downloadsPath as string).slice(0, -3) + 'downloads\\John Doe.vcf';
+    const absFilePath = (downloadsPath as string).slice(0, -3) + 'downloads/John Doe.vcf';
     const fs = require('fs');
 
     if (fs.existsSync(absFilePath)) {
