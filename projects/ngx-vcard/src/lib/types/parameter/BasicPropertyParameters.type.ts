@@ -1,5 +1,5 @@
-import { e } from '../../ngx-vcard.formatter';
 import { Address } from '../vCard';
+import { e } from '../../helpers';
 
 /**
  * A property can have attributes associated with it.

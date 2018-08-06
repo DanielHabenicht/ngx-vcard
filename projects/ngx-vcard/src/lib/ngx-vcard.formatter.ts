@@ -1,11 +1,11 @@
 import { VCard, Address } from './types/vCard';
-import { isArrayOfParameterTypeWorkHome } from './types/parameter/type/WorkHomeString.type';
 import {
   isPropertyWithParameters,
   propertyToVCardString,
   BasicPropertyParameters,
   isPropertyWithParametersAddressValue
 } from './types/parameter/BasicPropertyParameters.type';
+import { nl, e } from './helpers';
 
 export class VCardFormatter {
   public static getVCardAsBlob(vCard: VCard): Blob {
@@ -226,29 +226,6 @@ export class VCardFormatter {
     formattedVCardString += 'END:VCARD' + nl();
     return formattedVCardString;
   }
-}
-
-/**
- * Encodes string
- */
-export function e(value: string | undefined): string {
-  if (value) {
-    if (typeof value !== 'string') {
-      value = '' + value;
-    }
-    return value
-      .replace(/\n/g, '\n')
-      .replace(/,/g, ',')
-      .replace(/;/g, ';');
-  }
-  return '';
-}
-
-/**
- * Return new line characters
- */
-function nl(): string {
-  return '\n';
 }
 
 /**
