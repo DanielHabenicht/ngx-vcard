@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build:app": "ng build",
     "build:lib": "ng build --prod ngx-vcard",
+    "test:lib:dev-debug": "ng test ngx-vcard --watch --browsers=ChromeDebugging",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e ",

@@ -20,6 +20,12 @@ module.exports = function(config) {
       reports: ["html", "lcovonly"],
       fixWebpackSourcePaths: true
     },
+    customLaunchers: {
+      ChromeDebugging: {
+        base: "Chrome",
+        flags: ["--remote-debugging-port=9333"]
+      }
+    },
     reporters: ["progress", "kjhtml"],
     port: 9876,
     captureTimeout: 60 * 1000,

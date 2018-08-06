@@ -19,6 +19,17 @@
       "program": "${workspaceRoot}/node_modules/protractor/bin/protractor",
       "protocol": "inspector",
       "args": ["${workspaceRoot}/e2e/protractor.conf.js"]
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach Karma Chrome",
+      "address": "localhost",
+      "port": 9333,
+      "pathMapping": {
+        "/": "${workspaceRoot}",
+        "/base/": "${workspaceRoot}/"
+      }
     }
   ]
 }

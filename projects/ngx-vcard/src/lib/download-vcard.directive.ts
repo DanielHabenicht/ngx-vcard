@@ -7,7 +7,7 @@ import { VCard } from './types/vCard';
 })
 export class DownloadVCardDirective {
   constructor(private element: ElementRef) {}
-  @Input('vcdDownloadVCard') vCard: VCard;
+  @Input('vcdDownloadVCard') vCard!: VCard;
 
   @HostListener('click')
   onclick() {
@@ -21,7 +21,7 @@ export class DownloadVCardDirective {
     (a as any).style = 'display: none';
     document.body.appendChild(a);
     a.href = url;
-    a.download = this.vCard.name.firstNames + ' ' + this.vCard.name.lastNames + '.vcf';
+    if (this.vCard.name != null) { a.download = this.vCard.name.firstNames + ' ' + this.vCard.name.lastNames + '.vcf'; }
     a.dispatchEvent(new MouseEvent('click', { bubbles: false, cancelable: true, view: window }));
     window.URL.revokeObjectURL(url);
     a.remove();
