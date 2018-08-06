@@ -1,3 +1,5 @@
+import { BasicPropertyParameters } from "./parameter/BasicPropertyParameters.type";
+
 /**
  * vCard interface with properties for the vCard format, which allows the capture and exchange of
    information normally stored within an address book or directory application.
@@ -12,13 +14,14 @@ export interface VCard {
   /**
    * The source of directory information contained in the content type.
    * @kind SOURCE
+   * @link https://tools.ietf.org/html/rfc6350#section-6.1.3
    */
-  source?: string;
+  source?: string | { value: string; param: BasicPropertyParameters };
   /**
    * The kind of object the vCard represents.
    * @kind KIND
    */
-  kind?: 'individual' | 'group' | 'org' | 'location';
+  kind?: "individual" | "group" | "org" | "location";
   /**
    * Include extended XML-encoded vCard data in a plain vCard.
    * @kind XML
@@ -54,8 +57,7 @@ export interface VCard {
    * An image or photograph information that annotates some aspect of the object the vCard represents.
    * @kind PHOTO
    */
-  // photo?: Image | { work?: Image, home?: Image };
-  photo?: Image;
+  photo?: string | { value: string; param: BasicPropertyParameters };
 
   /**
    * The birth date of the object the vCard represents.
@@ -81,7 +83,7 @@ export interface VCard {
    * The components of the delivery address for the vCard object.
    * @kind ADR
    */
-  address?: Address | { work?: Address; home?: Address };
+  address?: Array<Address | { value: Address; param: BasicPropertyParameters }>;
 
   /***********************************************************************************************
    * Communications Properties
@@ -90,34 +92,13 @@ export interface VCard {
   /**
    * The telephone number for telephony communication with the object the vCard represents.
    * @kind TEL
-   * TODO: Still to specify
    */
-  telephone?: string;
+  telephone?: Array<string | { value: string; param: BasicPropertyParameters }>;
 
-  /**
-   * Cell phone number
-   */
-  cellPhone?: string[];
-  /**
-   * pager phone number
-   */
-  pagerPhone?: string[];
-  /**
-   * other phone number
-   */
-  otherPhone?: string[];
-  /**
-   * Work phone
-   */
-  workPhone?: string[];
   /**
    * Work facsimile
    */
   workFax?: string[];
-  /**
-   * Home phone
-   */
-  homePhone?: string[];
   /**
    * Home facsimile
    */
@@ -127,8 +108,7 @@ export interface VCard {
    * The electronic mail address for communication with the object the vCard represents.
    * @kind EMAIL
    */
-  email?: string[];
-  //  email?: string[] | {work: string, home: string}[];
+  email?: Array<string | { value: string; param: BasicPropertyParameters }>;
 
   /**
    * The address for work-related electronic mail communication
@@ -149,7 +129,7 @@ export interface VCard {
    * The language(s) that may be used for contacting the entity associated with the vCard.
    * @kind LANG
    */
-  language?: string[];
+  language?: Array<string | { value: string; param: BasicPropertyParameters }>;
 
   /***********************************************************************************************
    * Geographical Properties
@@ -185,12 +165,12 @@ export interface VCard {
    * A graphic image of a logo associated with the object the vCard represents.
    * @kind LOGO
    */
-  logo?: Image;
+  logo?: string | { value: string; param: BasicPropertyParameters };
   /**
    * The organizational name and units associated with the vCard.
    * @kind ORG
    */
-  organization?: string;
+  organization?: string | { value: string; param: BasicPropertyParameters };
   /**
    * A member in the group this vCard represents.
    * @kind MEMBER
@@ -200,7 +180,30 @@ export interface VCard {
    * A relationship between another entity and the entity represented by this vCard.
    * @kind RELATED
    */
-  related?: string;
+  related?: {
+    type:
+      | "contact"
+      | "acquaintance"
+      | "friend"
+      | "met"
+      | "co-worker"
+      | "colleague"
+      | "co-resident"
+      | "neighbor"
+      | "child"
+      | "parent"
+      | "sibling"
+      | "spouse"
+      | "kin"
+      | "muse"
+      | "crush"
+      | "date"
+      | "sweetheart"
+      | "me"
+      | "agent"
+      | "emergency";
+    value: string;
+  }[];
 
   /***********************************************************************************************
    * Explanatory Properties
@@ -288,44 +291,48 @@ export interface VCard {
   socialUrls?: any;
 }
 
-export interface Image {
-  url: string;
-  mediaType: string;
-  base64: boolean;
-  attachFromUrl: Function;
-  embedFromString: Function;
-}
-
 export interface Address {
   /**
    * Represents the actual text that should be put on the mailing label when delivering a physical package
    */
-  label: string;
+  label?: string;
+
+  /**
+   * The post office box
+   * @deprecated Incompatibility with vCard Version 3
+   */
+  postOfficeBox?: string;
+
+  /**
+   * The extended address (e.g. apartment or suite number)
+   * @deprecated Incompatibility with vCard Version 3
+   */
+  extendedAddress?: string;
 
   /**
    * Street address
    */
-  street: string;
+  street?: string;
 
   /**
-   * City
+   * locality (e.g. city)
    */
-  city: string;
+  locality?: string;
 
   /**
-   * State or province
+   * region (e.g. state or province)
    */
-  stateProvince: string;
+  region?: string;
 
   /**
    * Postal code
    */
-  postalCode: string;
+  postalCode?: string;
 
   /**
-   * Country or region
+   * country name (full name)
    */
-  countryRegion: string;
+  countryName?: string;
 }
 
 export interface Name {
@@ -360,7 +367,7 @@ export interface Gender {
    * @description
    * M stands for "male", F stands for "female", O stands for "other", N stands for "none or not applicable", U stands for "unknown".
    */
-  sex?: 'M' | 'F' | 'O' | 'N' | 'U';
+  sex?: "M" | "F" | "O" | "N" | "U";
 
   /**
    * Gender identity

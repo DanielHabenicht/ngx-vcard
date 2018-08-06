@@ -1,4 +1,11 @@
 import { VCard, Address } from './types/vCard';
+import { isArrayOfParameterTypeWorkHome } from './types/parameter/type/WorkHomeString.type';
+import {
+  isPropertyWithParameters,
+  propertyToVCardString,
+  BasicPropertyParameters,
+  isPropertyWithParametersAddressValue
+} from './types/parameter/BasicPropertyParameters.type';
 
 export class VCardFormatter {
   public static getVCardAsBlob(vCard: VCard): Blob {
@@ -22,10 +29,20 @@ export class VCardFormatter {
     // const encodingPrefix = +majorVersion >= 4 ? '' : ';CHARSET=UTF-8';
     const encodingPrefix = '';
     let formattedName = '';
-
     if (vCard.name == null) {
       vCard.name = {};
     }
+
+    let nameArray = [];
+    if (vCard.formattedName != null) {
+      nameArray = [vCard.formattedName.firstNames, vCard.formattedName.addtionalNames, vCard.formattedName.lastNames];
+    } else {
+      nameArray = [vCard.name.firstNames, vCard.name.addtionalNames, vCard.name.lastNames];
+    }
+
+    formattedName = nameArray.filter(string => string != null).join(' ');
+
+    formattedVCardString += 'FN' + encodingPrefix + ':' + e(formattedName) + nl();
 
     formattedVCardString +=
       'N' +
@@ -39,17 +56,6 @@ export class VCardFormatter {
         e(vCard.name.nameSuffix)
       ].join(';') +
       nl();
-
-    let nameArray = [];
-    if (vCard.formattedName != null) {
-      nameArray = [vCard.formattedName.firstNames, vCard.formattedName.addtionalNames, vCard.formattedName.lastNames];
-    } else {
-      nameArray = [vCard.name.firstNames, vCard.name.addtionalNames, vCard.name.lastNames];
-    }
-
-    formattedName = nameArray.filter(string => string != null).join(' ');
-
-    formattedVCardString += 'FN' + encodingPrefix + ':' + e(formattedName) + nl();
 
     if (vCard.nickname && majorVersion >= 3) {
       formattedVCardString += 'NICKNAME' + encodingPrefix + ':' + e(vCard.nickname) + nl();
@@ -75,104 +81,82 @@ export class VCardFormatter {
       formattedVCardString += 'BDAY:' + YYYYMMDD(vCard.birthday) + nl();
     }
 
-    if (vCard.birthday) {
+    if (vCard.anniversary) {
       formattedVCardString += 'ANNIVERSARY:' + YYYYMMDD(vCard.anniversary) + nl();
     }
 
+    if (vCard.language) {
+      vCard.language.forEach(language => {
+        if (isPropertyWithParameters(language)) {
+          formattedVCardString += 'LANG' + propertyToVCardString(language.param) + ':' + e(language.value) + nl();
+        } else {
+          formattedVCardString += 'LANG:' + e(language) + nl();
+        }
+      });
+    }
+
+    if (vCard.organization) {
+      if (isPropertyWithParameters(vCard.organization)) {
+        formattedVCardString +=
+          'ORG' + propertyToVCardString(vCard.organization.param) + ':' + e(vCard.organization.value) + nl();
+      } else {
+        formattedVCardString += 'ORG' + encodingPrefix + ':' + e(vCard.organization) + nl();
+      }
+    }
+
+    if (vCard.address) {
+      vCard.address.forEach(address => {
+        if (isPropertyWithParametersAddressValue(address)) {
+          formattedVCardString +=
+            'ADR' +
+            propertyToVCardString(address.param as BasicPropertyParameters) +
+            getFormattedAddress(address.value) +
+            nl();
+        } else {
+          formattedVCardString += 'ADR:' + getFormattedAddress(address) + nl();
+        }
+      });
+    }
+
+    if (vCard.telephone) {
+      vCard.telephone.forEach(element => {
+        if (isPropertyWithParameters(element)) {
+          formattedVCardString +=
+            'TEL' + propertyToVCardString(element.param as BasicPropertyParameters) + ':' + e(element.value) + nl();
+        } else {
+          formattedVCardString += 'TEL:' + e(element) + nl();
+        }
+      });
+    }
+
     if (vCard.email) {
-      vCard.email.forEach(function(address) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';type=HOME:' + e(address) + nl();
-        } else if (+majorVersion >= 3 && +majorVersion < 4) {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';type=HOME,INTERNET:' + e(address) + nl();
+      vCard.email.forEach(email => {
+        if (isPropertyWithParameters(email)) {
+          formattedVCardString += 'EMAIL' + propertyToVCardString(email.param) + ':' + e(email.value) + nl();
         } else {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';HOME;INTERNET:' + e(address) + nl();
+          formattedVCardString += 'EMAIL:' + e(email) + nl();
         }
       });
     }
 
-    if (vCard.workEmail) {
-      vCard.workEmail.forEach(function(address) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';type=WORK:' + e(address) + nl();
-        } else if (+majorVersion >= 3 && +majorVersion < 4) {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';type=WORK,INTERNET:' + e(address) + nl();
-        } else {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';WORK;INTERNET:' + e(address) + nl();
-        }
-      });
+    if (vCard.title) {
+      formattedVCardString += 'TITLE' + encodingPrefix + ':' + e(vCard.title) + nl();
     }
 
-    if (vCard.otherEmail) {
-      vCard.otherEmail.forEach(function(address) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';type=OTHER:' + e(address) + nl();
-        } else if (+majorVersion >= 3 && +majorVersion < 4) {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';type=OTHER,INTERNET:' + e(address) + nl();
-        } else {
-          formattedVCardString += 'EMAIL' + encodingPrefix + ';OTHER;INTERNET:' + e(address) + nl();
-        }
-      });
+    if (vCard.logo) {
+      if (isPropertyWithParameters(vCard.logo)) {
+        formattedVCardString += 'LOGO' + propertyToVCardString(vCard.logo.param) + ':' + e(vCard.logo.value) + nl();
+      } else {
+        formattedVCardString += 'LOGO:' + e(vCard.logo) + nl();
+      }
     }
 
-    if (vCard.logo && vCard.logo.url) {
-      formattedVCardString += getFormattedPhoto(
-        'LOGO',
-        vCard.logo.url,
-        vCard.logo.mediaType,
-        vCard.logo.base64,
-        majorVersion
-      );
-    }
-
-    if (vCard.photo && vCard.photo.url) {
-      formattedVCardString += getFormattedPhoto(
-        'PHOTO',
-        vCard.photo.url,
-        vCard.photo.mediaType,
-        vCard.photo.base64,
-        majorVersion
-      );
-    }
-
-    if (vCard.cellPhone) {
-      vCard.cellPhone.forEach(function(number) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'TEL;VALUE=uri;TYPE="voice,cell":tel:' + e(number) + nl();
-        } else {
-          formattedVCardString += 'TEL;TYPE=CELL:' + e(number) + nl();
-        }
-      });
-    }
-
-    if (vCard.pagerPhone) {
-      vCard.pagerPhone.forEach(function(number) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'TEL;VALUE=uri;TYPE="pager,cell":tel:' + e(number) + nl();
-        } else {
-          formattedVCardString += 'TEL;TYPE=PAGER:' + e(number) + nl();
-        }
-      });
-    }
-
-    if (vCard.homePhone) {
-      vCard.homePhone.forEach(function(number) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'TEL;VALUE=uri;TYPE="voice,home":tel:' + e(number) + nl();
-        } else {
-          formattedVCardString += 'TEL;TYPE=HOME,VOICE:' + e(number) + nl();
-        }
-      });
-    }
-
-    if (vCard.workPhone) {
-      vCard.workPhone.forEach(function(number) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'TEL;VALUE=uri;TYPE="voice,work":tel:' + e(number) + nl();
-        } else {
-          formattedVCardString += 'TEL;TYPE=WORK,VOICE:' + e(number) + nl();
-        }
-      });
+    if (vCard.photo) {
+      if (isPropertyWithParameters(vCard.photo)) {
+        formattedVCardString += 'PHOTO' + propertyToVCardString(vCard.photo.param) + ':' + e(vCard.photo.value) + nl();
+      } else {
+        formattedVCardString += 'PHOTO:' + e(vCard.photo) + nl();
+      }
     }
 
     if (vCard.homeFax) {
@@ -195,63 +179,8 @@ export class VCardFormatter {
       });
     }
 
-    if (vCard.otherPhone) {
-      vCard.otherPhone.forEach(function(number) {
-        if (+majorVersion >= 4) {
-          formattedVCardString += 'TEL;VALUE=uri;TYPE="voice,other":tel:' + e(number) + nl();
-        } else {
-          formattedVCardString += 'TEL;TYPE=OTHER:' + e(number) + nl();
-        }
-      });
-    }
-    let addressNotSet = true;
-    if (vCard.address) {
-      if (hasProp(vCard.address, 'home')) {
-        formattedVCardString += getFormattedAddress(
-          encodingPrefix,
-          {
-            details: (vCard.address as { home: Address }).home,
-            type: 'HOME'
-          },
-          majorVersion
-        );
-        addressNotSet = false;
-      }
-
-      if (hasProp(vCard.address, 'work')) {
-        formattedVCardString += getFormattedAddress(
-          encodingPrefix,
-          {
-            details: (vCard.address as { work: Address }).work,
-            type: 'WORK'
-          },
-          majorVersion
-        );
-        addressNotSet = false;
-      }
-
-      if (addressNotSet) {
-        formattedVCardString += getFormattedAddress(
-          encodingPrefix,
-          {
-            details: (vCard.address as { work: Address }).work,
-            type: 'WORK'
-          },
-          majorVersion
-        );
-      }
-    }
-
-    if (vCard.title) {
-      formattedVCardString += 'TITLE' + encodingPrefix + ':' + e(vCard.title) + nl();
-    }
-
     if (vCard.role) {
       formattedVCardString += 'ROLE' + encodingPrefix + ':' + e(vCard.role) + nl();
-    }
-
-    if (vCard.organization) {
-      formattedVCardString += 'ORG' + encodingPrefix + ':' + e(vCard.organization) + nl();
     }
 
     if (vCard.url) {
@@ -284,7 +213,12 @@ export class VCardFormatter {
     }
 
     if (vCard.source) {
-      formattedVCardString += 'SOURCE' + encodingPrefix + ':' + e(vCard.source) + nl();
+      if (isPropertyWithParameters(vCard.source)) {
+        formattedVCardString +=
+          'SOURCE' + encodingPrefix + propertyToVCardString(vCard.source.param) + ':' + e(vCard.source.value) + +nl();
+      } else {
+        formattedVCardString += 'SOURCE' + encodingPrefix + ':' + e(vCard.source) + nl();
+      }
     }
     if (vCard.rev) {
       formattedVCardString += 'REV:' + vCard.rev + nl();
@@ -297,15 +231,15 @@ export class VCardFormatter {
 /**
  * Encodes string
  */
-function e(value: string): string {
+export function e(value: string | undefined): string {
   if (value) {
     if (typeof value !== 'string') {
       value = '' + value;
     }
     return value
-      .replace(/\n/g, '\\n')
-      .replace(/,/g, '\\,')
-      .replace(/;/g, '\\;');
+      .replace(/\n/g, '\n')
+      .replace(/,/g, ',')
+      .replace(/;/g, ';');
   }
   return '';
 }
@@ -347,70 +281,33 @@ function getFormattedPhoto(
 /**
  * Get formatted address
  */
-function getFormattedAddress(
-  encodingPrefix: string,
-  address: { details: Address; type: string },
-  majorVersion: number
-) {
-  let formattedAddress = '';
-  if (address.details) {
-    if (
-      address.details.label ||
-      address.details.street ||
-      address.details.city ||
-      address.details.stateProvince ||
-      address.details.postalCode ||
-      address.details.countryRegion
-    ) {
-      if (+majorVersion >= 4) {
-        formattedAddress =
-          'ADR' +
-          encodingPrefix +
-          ';TYPE=' +
-          address.type +
-          (address.details.label ? ';LABEL="' + e(address.details.label) + '"' : '') +
-          ':;;' +
-          e(address.details.street) +
-          ';' +
-          e(address.details.city) +
-          ';' +
-          e(address.details.stateProvince) +
-          ';' +
-          e(address.details.postalCode) +
-          ';' +
-          e(address.details.countryRegion) +
-          nl();
-      } else {
-        if (address.details.label) {
-          formattedAddress = 'LABEL' + encodingPrefix + ';TYPE=' + address.type + ':' + e(address.details.label) + nl();
-        }
-        formattedAddress +=
-          'ADR' +
-          encodingPrefix +
-          ';TYPE=' +
-          address.type +
-          ':;;' +
-          e(address.details.street) +
-          ';' +
-          e(address.details.city) +
-          ';' +
-          e(address.details.stateProvince) +
-          ';' +
-          e(address.details.postalCode) +
-          ';' +
-          e(address.details.countryRegion) +
-          nl();
-      }
-    }
-  }
-
-  return formattedAddress;
+function getFormattedAddress(address: Address) {
+  return (
+    (address.label ? ';LABEL="' + e(address.label) + '"' : '') +
+    ':' +
+    e(address.postOfficeBox) +
+    ';' +
+    e(address.extendedAddress) +
+    ';' +
+    e(address.street) +
+    ';' +
+    e(address.locality) +
+    ';' +
+    e(address.region) +
+    ';' +
+    e(address.postalCode) +
+    ';' +
+    e(address.countryName)
+  );
 }
 
 /**
  * Convert date to YYYYMMDD format
  */
-function YYYYMMDD(date: Date): string {
+function YYYYMMDD(date: Date | undefined): string {
+  if (!date) {
+    return '';
+  }
   return date.toLocaleDateString('se').replace(/\D/g, ''); // use Swedish date format
 }
 
