@@ -20,7 +20,7 @@ If you want to have another Property, please open up an issue or even better pro
 2.  Import in app.module.ts:
 
     ```typescript
-    import { NgxVcardModule } from "ngx-vcard";
+    import { NgxVcardModule } from 'ngx-vcard';
 
     @NgModule({
       imports: [NgxVcardModule]
@@ -30,8 +30,40 @@ If you want to have another Property, please open up an issue or even better pro
 
 ## How to use
 
+### Use as Directive
+
+[Look here for a Stackblitz Example](https://stackblitz.com/github/DanielHabenicht/ngx-vcard)
+
+```typescript
+/* example.component.ts */
+import { Component } from '@angular/core';
+import { VCard } from 'ngx-vcard';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  public vCard: VCard = {
+    name: {
+      firstNames: 'John',
+      lastNames: 'Doe'
+    }
+  };
+}
+```
+
+```html
+<!-- example.component.html -->
+<div>
+  <button id="downloadButton" [vcdDownloadVCard]="vCard">Download VCard!</button>
+</div>
+```
+
+### Use as Formatter
+
 - TODO: Add .ts File example
-- TODO: Add directive example
 
 ## Mentions
 
