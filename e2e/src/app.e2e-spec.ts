@@ -39,7 +39,7 @@ describe('workspace-project App', () => {
         // for a larger file you might want to do calculate the file's MD5
         // hash and see if it matches what you expect.
         expect(fs.readFileSync(absFilePath, { encoding: 'utf8' })).toEqual(
-          `BEGIN:VCARD\nVERSION:4.0\nN:Doe;John;;;\nFN:John Doe\nEND:VCARD\n`
+          `BEGIN:VCARD\nVERSION:4.0\nFN:John Doe\nN:Doe;John;;;\nEND:VCARD\n`
         );
       });
   });
