@@ -12,8 +12,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e ",
     "commit": "git-cz",
-    "copy-license": "cp ./LICENSE ./dist/ngx-propagation-stop",
-    "copy-readme": "cp ./README.md ./dist/ngx-propagation-stop",
+    "copy-license": "cp ./LICENSE ./dist/ngx-vcard",
+    "copy-readme": "cp ./README.md ./dist/ngx-vcard",
     "copy-files": "npm run copy-license && npm run copy-readme",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
