@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "projects/ngx-vcard/ng-package.json",
+        "projects/ngx-vcard/package.json"
+      ]
+    }
+  }
+}
