@@ -67,4 +67,4 @@ export class AppComponent {
 
 ## Mentions
 
-This project is based on the [vCards-js](https://github.com/enesser/vCards-js) Package from Eric J Nesser.
+This project is heavily inspired from the [vCards-js](https://github.com/enesser/vCards-js) Package from Eric J Nesser.
