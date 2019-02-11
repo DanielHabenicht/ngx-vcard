@@ -1,4 +1,5 @@
 import { VCard, Address } from './types/vCard';
+import { VCardEncoding } from './types/vCardEncoding';
 import {
   isPropertyWithParameters,
   propertyToVCardString,
@@ -16,7 +17,7 @@ export class VCardFormatter {
   /**
    * Get formatted vCard in VCF format
    */
-  public static getVCardAsString(vCard: VCard): string {
+  public static getVCardAsString(vCard: VCard, encodingPrefix: VCardEncoding = VCardEncoding.utf8): string {
     if (!vCard.version) {
       vCard.version = '4.0';
     }
@@ -26,8 +27,7 @@ export class VCardFormatter {
     formattedVCardString += 'BEGIN:VCARD' + nl();
     formattedVCardString += 'VERSION:' + vCard.version + nl();
 
-    // const encodingPrefix = +majorVersion >= 4 ? '' : ';CHARSET=UTF-8';
-    const encodingPrefix = '';
+    // const encodingPrefix = '';
     let formattedName = '';
     if (vCard.name == null) {
       vCard.name = {};
