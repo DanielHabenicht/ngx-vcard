@@ -1,6 +1,5 @@
 import { VCardFormatter, getMajorVersion } from './ngx-vcard.formatter';
 import { VCard } from './types/vCard';
-import { VCardEncoding } from './types/vCardEncoding';
 
 describe('NgxVcardFormatter', () => {
   xit('sample test - 1', () => {
@@ -11,7 +10,7 @@ describe('NgxVcardFormatter', () => {
       title: 'Imaginary test person',
       email: [{ value: 'johnDoe@example.org', param: { type: ['work', 'cell'] } }]
     };
-    expect(VCardFormatter.getVCardAsString(vCard, VCardEncoding.none)).toEqual(
+    expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
       `BEGIN:VCARD
 VERSION:3.0
 N:Doe;John;;;
@@ -79,7 +78,7 @@ END:VCARD
       ],
       rev: '20080424T195243Z'
     };
-    expect(VCardFormatter.getVCardAsString(vCard, VCardEncoding.none)).toEqual(
+    expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
       `BEGIN:VCARD
 VERSION:4.0
 FN:Forrest Gump
@@ -130,7 +129,7 @@ END:VCARD
       geoPosition: '',
       photo: { value: 'http://www.example.com/dir_photos/my_photo.gif', param: { mediatype: 'image/gif' } }
     };
-    expect(VCardFormatter.getVCardAsString(vCard, VCardEncoding.none)).toEqual(`BEGIN:VCARD
+    expect(VCardFormatter.getVCardAsString(vCard)).toEqual(`BEGIN:VCARD
     VERSION:4.0
     FN:Simon Perreault
     N:Perreault;Simon;;;ing. jr,M.Sc.
@@ -154,7 +153,7 @@ END:VCARD
 
   it('empty vCard Test', () => {
     const vCard: VCard = {};
-    const string = VCardFormatter.getVCardAsString(vCard, VCardEncoding.none);
+    const string = VCardFormatter.getVCardAsString(vCard);
     expect(string).toEqual(
       `BEGIN:VCARD
 VERSION:4.0

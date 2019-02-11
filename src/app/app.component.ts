@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { VCard } from 'ngx-vcard';
+import { VCardEncoding } from 'ngx-vcard';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,6 @@ import { VCard } from 'ngx-vcard';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public vCardEncoding: typeof VCardEncoding = VCardEncoding;
   public vCard: VCard = { name: { firstNames: 'John', lastNames: 'Doe' } };
 }

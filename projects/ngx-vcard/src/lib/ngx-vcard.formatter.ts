@@ -9,15 +9,15 @@ import {
 import { nl, e } from './helpers';
 
 export class VCardFormatter {
-  public static getVCardAsBlob(vCard: VCard): Blob {
-    const data = VCardFormatter.getVCardAsString(vCard);
+  public static getVCardAsBlob(vCard: VCard, encoding: VCardEncoding = VCardEncoding.none): Blob {
+    const data = VCardFormatter.getVCardAsString(vCard, encoding);
     return new Blob([data], { type: 'text/xml' });
   }
 
   /**
    * Get formatted vCard in VCF format
    */
-  public static getVCardAsString(vCard: VCard, encodingPrefix: VCardEncoding = VCardEncoding.utf8): string {
+  public static getVCardAsString(vCard: VCard, encodingPrefix: VCardEncoding = VCardEncoding.none): string {
     if (!vCard.version) {
       vCard.version = '4.0';
     }
