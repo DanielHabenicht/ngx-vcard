@@ -11,7 +11,7 @@ import { nl, e } from './helpers';
 export class VCardFormatter {
   public static getVCardAsBlob(vCard: VCard, encoding: VCardEncoding = VCardEncoding.none): Blob {
     const data = VCardFormatter.getVCardAsString(vCard, encoding);
-    return new Blob([data], { type: 'text/xml' });
+    return new Blob([data], { type: 'text/vcard' });
   }
 
   /**
