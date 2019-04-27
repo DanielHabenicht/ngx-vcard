@@ -34,6 +34,7 @@ yarn-error.log
 testem.log
 /typings
 e2e/downloads
+junit
 
 # System Files
 .DS_Store
