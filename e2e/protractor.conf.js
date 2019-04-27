@@ -1,17 +1,27 @@
+// Protractor configuration file, see link for more information
+// https://github.com/angular/protractor/blob/master/lib/config.ts
+
 const { SpecReporter } = require('jasmine-spec-reporter');
 const { JUnitXmlReporter } = require('jasmine-reporters');
 
-process.env.CHROME_BIN = process.env.CHROME_BIN || require('puppeteer').executablePath();
+var path = require('path');
+var downloadsPath = path.resolve(__dirname, './downloads');
 
 exports.config = {
   allScriptsTimeout: 11000,
   specs: ['./src/**/*.e2e-spec.ts'],
   capabilities: {
     browserName: 'chrome',
-
     chromeOptions: {
-      args: ['--headless', '--disable-gpu', '--window-size=1200,900'],
-      binary: process.env.CHROME_BIN
+      args: ['--no-sandbox', '--test-type=browser', '--disable-gpu', '--window-size=1200,900'],
+      prefs: {
+        'plugins.always_open_pdf_externally': true,
+        download: {
+          prompt_for_download: false,
+          default_directory: downloadsPath,
+          directory_upgrade: true
+        }
+      }
     }
   },
   directConnect: true,
