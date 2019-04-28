@@ -13,7 +13,7 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ['--no-sandbox', '--test-type=browser', '--disable-gpu', '--window-size=1200,900'],
+      args: ["--headless", '--no-sandbox', '--test-type=browser', '--disable-gpu', '--window-size=1200,900'],
       prefs: {
         'plugins.always_open_pdf_externally': true,
         download: {
