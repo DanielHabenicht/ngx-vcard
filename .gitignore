@@ -35,6 +35,7 @@ testem.log
 /typings
 e2e/downloads
 junit
+coverage
 
 # System Files
 .DS_Store
