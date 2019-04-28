@@ -32,7 +32,6 @@
     "@angular/platform-browser-dynamic": "7.2.14",
     "@angular/router": "7.2.14",
     "core-js": "2.6.5",
-    "ngx-vcard": "1.1.6",
     "rxjs": "6.5.1",
     "tsickle": "0.34.0",
     "zone.js": "0.8.29"
