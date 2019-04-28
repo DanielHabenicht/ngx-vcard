@@ -25,3 +25,8 @@ steps:
 - script: |
     npm run semantic-release
   displayName: 'release'
+
+env:
+  GH_TOKEN: $(GITHUB_PAT)
+  NPM_TOKEN: $(NPM_PAT)
+  NPM_USERNAME: $(NPM_USER)
