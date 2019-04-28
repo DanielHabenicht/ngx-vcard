@@ -17,10 +17,14 @@ steps:
 
 - script: |
     npm install
+    npm install codecov -g
     npm run build:lib
     npm run test
     npm run e2e
-  displayName: 'npm install and build'
+    codecov
+  displayName: 'npm install, build and test'
+  env:
+    CODECOV_TOKEN: $(CODECOV_TOKEN)
 
 - script: |
     npm run semantic-release
