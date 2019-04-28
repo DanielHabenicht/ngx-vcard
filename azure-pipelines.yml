@@ -18,11 +18,21 @@ steps:
   - script: |
       npm install
       npm install codecov -g
+    displayName: 'npm install'
+
+  - script: |
       npm run build:lib
+    displayName: 'npm build'
+
+  - script: |
       npm run test -- --code-coverage
       npm run e2e
       codecov
-    displayName: 'npm install, build and test'
+    displayName: 'npm test'
+
+  - script: |
+      codecov
+    displayName: 'publish coverage'
     env:
       CODECOV_TOKEN: $(CODECOV_TOKEN)
 
