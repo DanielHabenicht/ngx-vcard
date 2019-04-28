@@ -19,7 +19,7 @@ steps:
     npm install
     npm install codecov -g
     npm run build:lib
-    npm run test
+    npm run test -- --code-coverage
     npm run e2e
     codecov
   displayName: 'npm install, build and test'
