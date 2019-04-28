@@ -13,7 +13,7 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ["--headless", '--no-sandbox', '--test-type=browser', '--disable-gpu', '--window-size=1200,900'],
+      args: ['--headless', '--no-sandbox', '--test-type=browser', '--disable-gpu', '--window-size=1200,900'],
       prefs: {
         'plugins.always_open_pdf_externally': true,
         download: {
@@ -42,5 +42,9 @@ exports.config = {
       consolidateAll: true
     });
     jasmine.getEnv().addReporter(junitReporter);
+    browser.driver.sendChromiumCommand('Page.setDownloadBehavior', {
+      behavior: 'allow',
+      downloadPath: downloadsPath
+    });
   }
 };
