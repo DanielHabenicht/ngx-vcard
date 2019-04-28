@@ -48,8 +48,8 @@ steps:
     displayName: 'Publish Angular test results - App'
     condition: succeededOrFailed()
     inputs:
-      searchFolder: $(System.DefaultWorkingDirectory)junit
-      testRunTitle: Angular
+      searchFolder: $(System.DefaultWorkingDirectory)/junit
+      testRunTitle: Angular App
       testResultsFormat: JUnit
       testResultsFiles: '**/TESTS*.xml'
 
@@ -57,8 +57,8 @@ steps:
     displayName: 'Publish Angular test results - Package'
     condition: succeededOrFailed()
     inputs:
-      searchFolder: $(System.DefaultWorkingDirectory)projects/junit
-      testRunTitle: Angular
+      searchFolder: $(System.DefaultWorkingDirectory)/projects/junit
+      testRunTitle: Angular Package
       testResultsFormat: JUnit
       testResultsFiles: '**/TESTS*.xml'
 
@@ -66,7 +66,7 @@ steps:
     displayName: 'Publish Angular E2E test results'
     condition: succeededOrFailed()
     inputs:
-      searchFolder: $(System.DefaultWorkingDirectory)e2e/junit
+      searchFolder: $(System.DefaultWorkingDirectory)/e2e/junit
       testRunTitle: Angular_E2E
       testResultsFormat: JUnit
       testResultsFiles: '**/junit*.xml'
