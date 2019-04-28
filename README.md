@@ -2,6 +2,8 @@
 [![Build Status](https://dev.azure.com/DanielHabenicht/ngx-vcard/_apis/build/status/DanielHabenicht.ngx-vcard?branchName=master)](https://dev.azure.com/DanielHabenicht/ngx-vcard/_build/latest?definitionId=2&branchName=master)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+[![codecov](https://codecov.io/gh/DanielHabenicht/ngx-vcard/branch/master/graph/badge.svg)](https://codecov.io/gh/DanielHabenicht/ngx-vcard)
+
 
 # ngx-vcard
 
