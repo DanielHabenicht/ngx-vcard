@@ -35,7 +35,7 @@ steps:
       reportDirectory: coverage
       failIfCoverageEmpty: true
 
-  - task: PublishCodeCoverageResults@2
+  - task: PublishCodeCoverageResults@1
     displayName: 'Publish code coverage Angular results - Package'
     condition: succeededOrFailed()
     inputs:
@@ -44,7 +44,7 @@ steps:
       reportDirectory: projects/coverage
       failIfCoverageEmpty: true
 
-  - task: PublishTestResults@1
+  - task: PublishTestResults@2
     displayName: 'Publish Angular test results - App'
     condition: succeededOrFailed()
     inputs:
@@ -62,7 +62,7 @@ steps:
       testResultsFormat: JUnit
       testResultsFiles: '**/TESTS*.xml'
 
-  - task: PublishTestResultsE2e
+  - task: PublishTestResults@2
     displayName: 'Publish Angular E2E test results'
     condition: succeededOrFailed()
     inputs:
