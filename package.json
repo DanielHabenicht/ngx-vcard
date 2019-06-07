@@ -33,6 +33,7 @@
     "@angular/router": "7.2.15",
     "core-js": "2.6.9",
     "rxjs": "6.5.1",
+    "ngx-vcard": "^1.1.9",
     "tsickle": "0.34.0",
     "zone.js": "0.8.29"
   },
