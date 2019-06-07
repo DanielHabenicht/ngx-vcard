@@ -39,6 +39,9 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "es5": {
+              "tsConfig": "./tsconfig.es5.json"
             }
           }
         },
@@ -50,6 +53,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ngx-vcard-app:build:production"
+            },
+            "es5": {
+              "browserTarget": "app:build:es5"
             }
           }
         },
