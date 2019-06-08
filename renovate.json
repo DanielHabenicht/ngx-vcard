@@ -11,6 +11,10 @@
     {
       "extends": "monorepo:angularcli",
       "groupName": "angularcli monorepo"
+    },
+    {
+      "packagePatterns": ["ngx-vcard"],
+      "enabled": false
     }
   ]
 }
