@@ -41,7 +41,7 @@
               "buildOptimizer": true
             },
             "es5": {
-              "tsConfig": "./tsconfig.es5.json"
+              "tsConfig": "src/tsconfig.es5.json"
             }
           }
         },
@@ -55,7 +55,7 @@
               "browserTarget": "ngx-vcard-app:build:production"
             },
             "es5": {
-              "browserTarget": "app:build:es5"
+              "browserTarget": "ngx-vcard-app:build:es5"
             }
           }
         },
