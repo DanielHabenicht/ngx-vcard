@@ -30,7 +30,6 @@
     "@angular/platform-browser": "8.0.0",
     "@angular/platform-browser-dynamic": "8.0.0",
     "@angular/router": "8.0.0",
-    "core-js": "2.6.9",
     "ngx-vcard": "x",
     "rxjs": "6.5.2",
     "tsickle": "0.35.0",
