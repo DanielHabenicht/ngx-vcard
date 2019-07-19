@@ -3,6 +3,10 @@
     "config:base",
     ":semanticCommits"
   ],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
   "packageRules": [
     {
       "extends": "monorepo:angular",
