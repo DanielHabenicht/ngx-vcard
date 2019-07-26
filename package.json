@@ -33,7 +33,7 @@
     "ngx-vcard": "x",
     "rxjs": "6.5.2",
     "tsickle": "0.36.0",
-    "zone.js": "0.9.1"
+    "zone.js": "0.10.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.801.2",
