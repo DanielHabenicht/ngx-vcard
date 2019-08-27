@@ -3,6 +3,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![codecov](https://codecov.io/gh/DanielHabenicht/ngx-vcard/branch/master/graph/badge.svg)](https://codecov.io/gh/DanielHabenicht/ngx-vcard)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard?ref=badge_shield)
 
 
 # ngx-vcard
@@ -70,3 +71,7 @@ export class AppComponent {
 ## Mentions
 
 This project is heavily inspired from the [vCards-js](https://github.com/enesser/vCards-js) Package from Eric J Nesser.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard?ref=badge_large)
