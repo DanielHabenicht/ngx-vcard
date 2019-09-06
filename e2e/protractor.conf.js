@@ -4,6 +4,9 @@
 const { SpecReporter } = require('jasmine-spec-reporter');
 const { JUnitXmlReporter } = require('jasmine-reporters');
 
+// Use pupeteer
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 var path = require('path');
 var downloadsPath = path.resolve(__dirname, './downloads');
 
