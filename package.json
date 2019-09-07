@@ -60,7 +60,7 @@
     "ng-packagr": "5.5.0",
     "protractor": "5.4.2",
     "puppeteer": "1.19.0",
-    "semantic-release": "15.13.18",
+    "semantic-release": "15.13.24",
     "ts-node": "8.3.0",
     "tslib": "1.10.0",
     "tslint": "5.18.0",
