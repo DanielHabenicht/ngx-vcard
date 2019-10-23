@@ -43,7 +43,7 @@
     "@angular/language-service": "8.2.11",
     "@types/jasmine": "3.4.4",
     "@types/jasminewd2": "2.0.8",
-    "@types/node": "11.13.22",
+    "@types/node": "11.13.23",
     "codelyzer": "5.2.0",
     "commitizen": "4.0.3",
     "copyfiles": "2.1.1",
