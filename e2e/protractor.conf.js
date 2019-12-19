@@ -16,6 +16,7 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
+      binary: process.env.CHROME_BIN,
       args: ['--headless', '--no-sandbox', '--test-type=browser', '--disable-gpu', '--window-size=1200,900'],
       prefs: {
         'plugins.always_open_pdf_externally': true,
