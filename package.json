@@ -46,7 +46,7 @@
     "@types/node": "11.15.4",
     "codelyzer": "5.2.1",
     "commitizen": "4.0.3",
-    "copyfiles": "2.1.1",
+    "copyfiles": "2.2.0",
     "cz-conventional-changelog": "2.1.0",
     "jasmine-core": "3.5.0",
     "jasmine-reporters": "2.3.2",
