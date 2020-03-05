@@ -32,7 +32,7 @@
     "@angular/router": "8.2.14",
     "ngx-vcard": "x",
     "rxjs": "6.5.4",
-    "tsickle": "0.38.0",
+    "tsickle": "0.38.1",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
