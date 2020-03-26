@@ -22,5 +22,8 @@
       "ngx-vcard": ["dist/ngx-vcard"],
       "ngx-vcard/*": ["dist/ngx-vcard/*"]
     }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
   }
 }
