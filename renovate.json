@@ -3,6 +3,9 @@
     "config:base",
     ":semanticCommits"
   ],
+  "masterIssue": true,
+  "stabilityDays": 3,
+  "prCreation": "not-pending",
   "automerge": true,
   "major": {
     "automerge": false
