@@ -5,14 +5,13 @@
 [![codecov](https://codecov.io/gh/DanielHabenicht/ngx-vcard/branch/master/graph/badge.svg)](https://codecov.io/gh/DanielHabenicht/ngx-vcard)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard?ref=badge_shield)
 
-
 # ngx-vcard
 
-Almost fully RFC compliant vCard Formatter, that also can download the generated vCard.
-Outputs VCard version 4.
-Maybe other version will be supported.
+Almost fully RFC compliant vCard Formatter, that also can download the generated
+vCard. Outputs VCard version 4. Maybe other version will be supported.
 
-If you want to have another Property, please open up an issue or even better provide a PR. ;)
+If you want to have another Property, please open up an issue or even better
+provide a PR. ;)
 
 ## Installation
 
@@ -23,10 +22,10 @@ If you want to have another Property, please open up an issue or even better pro
 2.  Import in app.module.ts:
 
     ```typescript
-    import { NgxVcardModule } from 'ngx-vcard';
+    import { NgxVcardModule } from "ngx-vcard";
 
     @NgModule({
-      imports: [NgxVcardModule]
+      imports: [NgxVcardModule],
     })
     export class AppModule {}
     ```
@@ -39,20 +38,20 @@ If you want to have another Property, please open up an issue or even better pro
 
 ```typescript
 /* example.component.ts */
-import { Component } from '@angular/core';
-import { VCard } from 'ngx-vcard';
+import { Component } from "@angular/core";
+import { VCard } from "ngx-vcard";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
   public vCard: VCard = {
     name: {
-      firstNames: 'John',
-      lastNames: 'Doe'
-    }
+      firstNames: "John",
+      lastNames: "Doe",
+    },
   };
 }
 ```
@@ -60,7 +59,9 @@ export class AppComponent {
 ```html
 <!-- example.component.html -->
 <div>
-  <button id="downloadButton" [vcdDownloadVCard]="vCard">Download VCard!</button>
+  <button id="downloadButton" [vcdDownloadVCard]="vCard">
+    Download VCard!
+  </button>
 </div>
 ```
 
@@ -70,26 +71,26 @@ export class AppComponent {
 
 ```typescript
 /* example.component.ts */
-import { Component } from '@angular/core';
-import { VCardFormatter, VCard } from 'ngx-vcard';
+import { Component } from "@angular/core";
+import { VCardFormatter, VCard } from "ngx-vcard";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
-export class AppComponent  {
+export class AppComponent {
   public vCard: VCard = {
     name: {
-      firstNames: 'John',
-      lastNames: 'Doe'
-    }
+      firstNames: "John",
+      lastNames: "Doe",
+    },
   };
 
-  public vCardString = VCardFormatter.getVCardAsString(this.vCard)
-  
-  public ngOnInit(){
-    console.log(this.vCardString)
+  public vCardString = VCardFormatter.getVCardAsString(this.vCard);
+
+  public ngOnInit() {
+    console.log(this.vCardString);
   }
 }
 ```
@@ -106,8 +107,9 @@ export class AppComponent  {
 
 ## Mentions
 
-This project is heavily inspired from the [vCards-js](https://github.com/enesser/vCards-js) Package from Eric J Nesser.
-
+This project is heavily inspired from the
+[vCards-js](https://github.com/enesser/vCards-js) Package from Eric J Nesser.
 
 ## License
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard?ref=badge_large)
