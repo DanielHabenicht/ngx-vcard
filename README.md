@@ -66,7 +66,43 @@ export class AppComponent {
 
 ### Use as Formatter
 
-- TODO: Add .ts File example
+[Look here for a Stackblitz Example](https://stackblitz.com/github/DanielHabenicht/ngx-vcard)
+
+```typescript
+/* example.component.ts */
+import { Component } from '@angular/core';
+import { VCardFormatter, VCard } from 'ngx-vcard';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
+  public vCard: VCard = {
+    name: {
+      firstNames: 'John',
+      lastNames: 'Doe'
+    }
+  };
+
+  public vCardString = VCardFormatter.getVCardAsString(this.vCard)
+  
+  public ngOnInit(){
+    console.log(this.vCardString)
+  }
+}
+```
+
+```html
+<!-- example.component.html -->
+<p>
+  VCard String:
+</p>
+<p>
+  {{vCardString}}
+</p>
+```
 
 ## Mentions
 
