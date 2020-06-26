@@ -23,10 +23,11 @@ steps:
       npm run build:lib
     displayName: 'npm build'
 
-  - script: |
-      npm run test -- --code-coverage
-      npm run e2e
-    displayName: 'npm test'
+  - script: npm run test -- --code-coverage
+    displayName: 'unit test'  
+
+  - script: npm run e2e
+    displayName: 'e2e test'
 
   - script: |
       npm install codecov -g
