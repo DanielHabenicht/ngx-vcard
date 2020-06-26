@@ -261,7 +261,6 @@ function getFormattedPhoto(
 function getFormattedAddress(address: Address) {
   return (
     (address.label ? ';LABEL="' + e(address.label) + '"' : '') +
-    ':' +
     e(address.postOfficeBox) +
     ';' +
     e(address.extendedAddress) +
