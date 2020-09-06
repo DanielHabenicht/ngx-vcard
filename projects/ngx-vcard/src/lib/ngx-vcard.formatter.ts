@@ -113,7 +113,7 @@ export class VCardFormatter {
             getFormattedAddress(address.value) +
             nl();
         } else {
-          formattedVCardString += 'ADR:' + getFormattedAddress(address) + nl();
+          formattedVCardString += 'ADR' + getFormattedAddress(address) + nl();
         }
       });
     }
