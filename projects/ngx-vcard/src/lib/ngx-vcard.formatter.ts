@@ -4,7 +4,7 @@ import {
   isPropertyWithParameters,
   propertyToVCardString,
   BasicPropertyParameters,
-  isPropertyWithParametersAddressValue
+  isPropertyWithParametersAddressValue,
 } from './types/parameter/BasicPropertyParameters.type';
 import { nl, e } from './helpers';
 
@@ -40,7 +40,7 @@ export class VCardFormatter {
       nameArray = [vCard.name.firstNames, vCard.name.addtionalNames, vCard.name.lastNames];
     }
 
-    formattedName = nameArray.filter(string => string != null).join(' ');
+    formattedName = nameArray.filter((string) => string != null).join(' ');
 
     formattedVCardString += 'FN' + encodingPrefix + ':' + e(formattedName) + nl();
 
@@ -53,7 +53,7 @@ export class VCardFormatter {
         e(vCard.name.firstNames),
         e(vCard.name.addtionalNames),
         e(vCard.name.namePrefix),
-        e(vCard.name.nameSuffix)
+        e(vCard.name.nameSuffix),
       ].join(';') +
       nl();
 
@@ -86,7 +86,7 @@ export class VCardFormatter {
     }
 
     if (vCard.language) {
-      vCard.language.forEach(language => {
+      vCard.language.forEach((language) => {
         if (isPropertyWithParameters(language)) {
           formattedVCardString += 'LANG' + propertyToVCardString(language.param) + ':' + e(language.value) + nl();
         } else {
@@ -105,7 +105,7 @@ export class VCardFormatter {
     }
 
     if (vCard.address) {
-      vCard.address.forEach(address => {
+      vCard.address.forEach((address) => {
         if (isPropertyWithParametersAddressValue(address)) {
           formattedVCardString +=
             'ADR' +
@@ -119,18 +119,22 @@ export class VCardFormatter {
     }
 
     if (vCard.telephone) {
-      vCard.telephone.forEach(element => {
-        if (isPropertyWithParameters(element)) {
-          formattedVCardString +=
-            'TEL' + propertyToVCardString(element.param as BasicPropertyParameters) + ':' + e(element.value) + nl();
-        } else {
-          formattedVCardString += 'TEL:' + e(element) + nl();
+      vCard.telephone.forEach((element) => {
+        if (!isPropertyWithParameters(element)) {
+          element = {
+            value: element,
+            param: {
+              type: 'voice',
+            },
+          };
         }
+        formattedVCardString +=
+          'TEL' + propertyToVCardString(element.param as BasicPropertyParameters) + ':' + e(element.value) + nl();
       });
     }
 
     if (vCard.email) {
-      vCard.email.forEach(email => {
+      vCard.email.forEach((email) => {
         if (isPropertyWithParameters(email)) {
           formattedVCardString += 'EMAIL' + propertyToVCardString(email.param) + ':' + e(email.value) + nl();
         } else {
@@ -160,7 +164,7 @@ export class VCardFormatter {
     }
 
     if (vCard.homeFax) {
-      vCard.homeFax.forEach(function(number) {
+      vCard.homeFax.forEach(function (number) {
         if (+majorVersion >= 4) {
           formattedVCardString += 'TEL;VALUE=uri;TYPE="fax,home":tel:' + e(number) + nl();
         } else {
@@ -170,7 +174,7 @@ export class VCardFormatter {
     }
 
     if (vCard.workFax) {
-      vCard.workFax.forEach(function(number) {
+      vCard.workFax.forEach(function (number) {
         if (+majorVersion >= 4) {
           formattedVCardString += 'TEL;VALUE=uri;TYPE="fax,work":tel:' + e(number) + nl();
         } else {
