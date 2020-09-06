@@ -8,7 +8,7 @@ describe('NgxVcardFormatter', () => {
       name: { firstNames: 'John', lastNames: 'Doe' },
       organization: 'Example.com Inc.',
       title: 'Imaginary test person',
-      email: [{ value: 'johnDoe@example.org', param: { type: ['work', 'cell'] } }]
+      email: [{ value: 'johnDoe@example.org', param: { type: ['work', 'cell'] } }],
     };
     expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
       `BEGIN:VCARD
@@ -47,10 +47,19 @@ END:VCARD
       organization: 'Bubba Gump Shrimp Co.',
       title: 'Shrimp Man',
       email: ['forrestgump@example.com'],
-      photo: { value: 'http://www.example.com/dir_photos/my_photo.gif', param: { mediatype: 'image/gif' } },
+      photo: {
+        value: 'http://www.example.com/dir_photos/my_photo.gif',
+        param: { mediatype: 'image/gif' },
+      },
       telephone: [
-        { value: 'tel:+1-111-555-1212', param: { type: ['work', 'voice'], value: 'uri' } },
-        { value: 'tel:+1-404-555-1212', param: { type: ['home', 'voice'], value: 'uri' } }
+        {
+          value: 'tel:+1-111-555-1212',
+          param: { type: ['work', 'voice'], value: 'uri' },
+        },
+        {
+          value: 'tel:+1-404-555-1212',
+          param: { type: ['home', 'voice'], value: 'uri' },
+        },
       ],
       address: [
         {
@@ -60,9 +69,9 @@ END:VCARD
             locality: 'Baytown',
             postalCode: '30314',
             region: 'LA',
-            countryName: 'United States of America'
+            countryName: 'United States of America',
           },
-          param: { type: ['work'], pref: 1 }
+          param: { type: ['work'], pref: 1 },
         },
         {
           value: {
@@ -71,12 +80,12 @@ END:VCARD
             locality: 'Baytown',
             postalCode: '30314',
             region: 'LA',
-            countryName: 'United States of America'
+            countryName: 'United States of America',
           },
-          param: { type: ['home'] }
-        }
+          param: { type: ['home'] },
+        },
       ],
-      rev: '20080424T195243Z'
+      rev: '20080424T195243Z',
     };
     expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
       `BEGIN:VCARD
@@ -97,15 +106,63 @@ END:VCARD
     );
   });
 
+  it('use default values', () => {
+    const vCard: VCard = {
+      version: '3.0',
+      name: { firstNames: 'John', lastNames: 'Doe' },
+      telephone: ['+1234567890'],
+    };
+    expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
+      `BEGIN:VCARD
+VERSION:3.0
+FN:John Doe
+N:Doe;John;;;
+TEL;TYPE=voice:+1234567890
+END:VCARD
+`
+    );
+  });
+
+  it('overwrite default values', () => {
+    const vCard: VCard = {
+      version: '3.0',
+      name: { firstNames: 'John', lastNames: 'Doe' },
+      telephone: [
+        {
+          value: '+1234567890',
+          param: {
+            type: 'work',
+          },
+        },
+      ],
+    };
+    expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
+      `BEGIN:VCARD
+VERSION:3.0
+FN:John Doe
+N:Doe;John;;;
+TEL;TYPE=work:+1234567890
+END:VCARD
+`
+    );
+  });
+
   xit('sample test - 3', () => {
     const vCard: VCard = {
       version: '4.0',
       formattedName: { firstNames: 'Simon', lastNames: 'Perreault' },
-      name: { firstNames: 'Simon', lastNames: 'Perreault', nameSuffix: 'ing. jr,M.Sc.' },
+      name: {
+        firstNames: 'Simon',
+        lastNames: 'Perreault',
+        nameSuffix: 'ing. jr,M.Sc.',
+      },
       birthday: new Date(2003, 2),
       anniversary: new Date(2009, 8, 8, 14, 30),
       gender: { sex: 'M' },
-      language: [{ value: 'fr', param: { pref: 1 } }, { value: 'en', param: { pref: 2 } }],
+      language: [
+        { value: 'fr', param: { pref: 1 } },
+        { value: 'en', param: { pref: 2 } },
+      ],
       organization: { value: 'Viagenie', param: { type: ['work'] } },
       address: [
         {
@@ -115,19 +172,28 @@ END:VCARD
             locality: 'Quebec',
             postalCode: 'G1V 2M2',
             region: 'QC',
-            countryName: 'Canada'
+            countryName: 'Canada',
           },
-          param: { type: ['work'] }
-        }
+          param: { type: ['work'] },
+        },
       ],
       telephone: [
-        { value: 'tel:+1-418-656-9254', param: { value: 'uri', type: ['work', 'voice'], pref: 1 } },
-        { value: 'tel:+1-418-262-6501', param: { value: 'uri', type: ['work', 'cell', 'video', 'text'] } }
+        {
+          value: 'tel:+1-418-656-9254',
+          param: { value: 'uri', type: ['work', 'voice'], pref: 1 },
+        },
+        {
+          value: 'tel:+1-418-262-6501',
+          param: { value: 'uri', type: ['work', 'cell', 'video', 'text'] },
+        },
       ],
 
       email: [{ value: 'simon.perreault@viagenie.ca', param: { type: 'work' } }],
       geoPosition: '',
-      photo: { value: 'http://www.example.com/dir_photos/my_photo.gif', param: { mediatype: 'image/gif' } }
+      photo: {
+        value: 'http://www.example.com/dir_photos/my_photo.gif',
+        param: { mediatype: 'image/gif' },
+      },
     };
     expect(VCardFormatter.getVCardAsString(vCard)).toEqual(`BEGIN:VCARD
     VERSION:4.0
