@@ -10,7 +10,7 @@
     "test:lib:dev-debug": "ng test ngx-vcard --watch --browsers=ChromeDebugging",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "webdriver-manager update --versions.chrome=80.0.3987.106 --gecko false --standalone false && ng e2e --webdriverUpdate false",
+    "e2e": "webdriver-manager update --versions.chrome=85.0.4183.38 --gecko false --standalone false && ng e2e --webdriverUpdate false",
     "commit": "git-cz",
     "copy-license": "copyfiles ./LICENSE ./dist/ngx-vcard",
     "copy-readme": "copyfiles ./README.md ./dist/ngx-vcard",
