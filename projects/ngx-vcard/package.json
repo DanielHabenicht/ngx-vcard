@@ -21,7 +21,7 @@
     "url": "https://github.com/DanielHabenicht/ngx-vcard"
   },
   "dependencies": {
-    "tslib": "2.0.2"
+    "tslib": "2.0.3"
   },
   "peerDependencies": {
     "@angular/common": ">=5.x <11.0.0",
