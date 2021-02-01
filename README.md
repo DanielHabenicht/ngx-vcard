@@ -7,7 +7,7 @@
 
 # ngx-vcard
 
-Almost fully RFC compliant vCard Formatter, that also can download the generated
+Almost fully [RFC](https://tools.ietf.org/html/rfc6350) compliant vCard Formatter, that also can download the generated
 vCard. Outputs VCard version 4. Maybe other version will be supported.
 
 If you want to have another Property, please open up an issue or even better
