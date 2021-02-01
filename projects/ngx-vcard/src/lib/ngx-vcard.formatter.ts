@@ -190,7 +190,7 @@ export class VCardFormatter {
     if (vCard.url) {
       let urlNotSet = true;
       if (hasProp(vCard.url, 'home')) {
-        formattedVCardString += 'URL;type=WORK' + encodingPrefix + ':' + e((vCard.url as { home: string }).home) + nl();
+        formattedVCardString += 'URL;type=HOME' + encodingPrefix + ':' + e((vCard.url as { home: string }).home) + nl();
         urlNotSet = false;
       }
 
