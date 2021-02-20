@@ -59,7 +59,7 @@
     "karma-junit-reporter": "2.0.1",
     "ng-packagr": "10.1.2",
     "protractor": "7.0.0",
-    "puppeteer": "5.3.1",
+    "puppeteer": "7.1.0",
     "semantic-release": "17.3.9",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
