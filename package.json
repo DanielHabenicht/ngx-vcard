@@ -32,7 +32,7 @@
     "@angular/router": "10.2.5",
     "ngx-vcard": "x",
     "rxjs": "6.6.7",
-    "tslib": "2.3.0",
+    "tslib": "2.3.1",
     "zone.js": "0.11.4"
   },
   "devDependencies": {
