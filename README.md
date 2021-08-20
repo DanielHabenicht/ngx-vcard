@@ -111,9 +111,9 @@ This project is heavily inspired from the
 [vCards-js](https://github.com/enesser/vCards-js) Package from Eric J Nesser.
 
 ## RFC
-VCard Version 4 - https://tools.ietf.org/html/rfc6350
-VCard Version 3 - https://www.ietf.org/rfc/rfc2426.txt
-Some Story: https://alessandrorossini.org/the-sad-story-of-the-vcard-format-and-its-lack-of-interoperability/
+- VCard Version 4 - https://tools.ietf.org/html/rfc6350
+- VCard Version 3 - https://www.ietf.org/rfc/rfc2426.txt
+A Story about everything: https://alessandrorossini.org/the-sad-story-of-the-vcard-format-and-its-lack-of-interoperability/
 
 ## License
 
