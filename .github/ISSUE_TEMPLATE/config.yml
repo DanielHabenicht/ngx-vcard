@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Other Questions?
+    url: https://stackoverflow.com/questions/ask?tags=angular;ngx-vcard
+    about: Please ask and answer questions about general use there.
