@@ -5,12 +5,15 @@ image:
 tasks:
      # runs during prebuild
   - init: |
+      export NG_CLI_ANALYTICS="ci" 
       npm install
       npm run build
+      gp sync-done install
     # runs on startup
     command: npm run start
-  - command: npm run test --watch
-
+  - init: gp sync-await install
+    command: npm run test --watch
+    openMode: split-right
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
   - port: 4200
