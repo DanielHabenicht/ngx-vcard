@@ -7,8 +7,9 @@
 
 # ngx-vcard
 
-Almost fully [RFC](https://tools.ietf.org/html/rfc6350) compliant vCard Formatter, that also can download the generated
-vCard. Outputs VCard version 4. Maybe other version will be supported.
+Almost fully [RFC](https://tools.ietf.org/html/rfc6350) compliant vCard
+Formatter, that also can download the generated vCard. Outputs VCard version 4.
+Maybe other version will be supported.
 
 If you want to have another Property, please open up an issue or even better
 provide a PR. ;)
@@ -55,14 +56,29 @@ export class AppComponent {
       lastNames: "Doe",
     },
   };
+  public generateVCardOnTheFly = (): VCard => {
+    // TODO: Generate the VCard before Download
+    return {
+      name: { firstNames: "John", lastNames: "Doe", addtionalNames: "Auto" },
+    };
+  };
 }
 ```
 
 ```html
 <!-- example.component.html -->
 <div>
-  <button id="downloadButton" [vcdDownloadVCard]="vCard">
+  <!-- Normal -->
+  <button id="downloadButtonNormal" [vcdDownloadVCard]="vCard">
     Download VCard!
+  </button>
+  <!-- Generate VCard only on Click -->
+  <button
+    id="downloadButtonFunction"
+    vcdDownloadVCard
+    [generateVCardFunction]="generateVCardOnTheFly"
+  >
+    Download generated VCard!
   </button>
 </div>
 ```
@@ -99,12 +115,8 @@ export class AppComponent {
 
 ```html
 <!-- example.component.html -->
-<p>
-  VCard String:
-</p>
-<p>
-  {{vCardString}}
-</p>
+<p>VCard String:</p>
+<p>{{vCardString}}</p>
 ```
 
 ## Mentions
@@ -113,9 +125,11 @@ This project is heavily inspired from the
 [vCards-js](https://github.com/enesser/vCards-js) Package from Eric J Nesser.
 
 ## RFC
+
 - VCard Version 4 - https://tools.ietf.org/html/rfc6350
-- VCard Version 3 - https://www.ietf.org/rfc/rfc2426.txt
-A Story about everything: https://alessandrorossini.org/the-sad-story-of-the-vcard-format-and-its-lack-of-interoperability/
+- VCard Version 3 - https://www.ietf.org/rfc/rfc2426.txt A Story about
+  everything:
+  https://alessandrorossini.org/the-sad-story-of-the-vcard-format-and-its-lack-of-interoperability/
 
 ## License
 
