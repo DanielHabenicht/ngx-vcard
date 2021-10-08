@@ -23,6 +23,5 @@
     }
   },
   "angularCompilerOptions": {
-    "enableIvy": false
   }
 }
