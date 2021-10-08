@@ -5,7 +5,11 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getDownloadButton() {
-    return element(by.id('downloadButton'));
+  getNormalDownloadButton() {
+    return element(by.id('downloadButtonNormal'));
+  }
+
+  getFunctionDownloadButton() {
+    return element(by.id('downloadButtonFunction'));
   }
 }

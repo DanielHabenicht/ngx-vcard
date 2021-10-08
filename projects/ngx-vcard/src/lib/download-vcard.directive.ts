@@ -3,21 +3,38 @@ import { VCardFormatter } from './ngx-vcard.formatter';
 import { VCard } from './types/vCard';
 import { VCardEncoding } from './types/vCardEncoding';
 
+const ERROR_MESSAGE =
+  "ngx-vcard: No input specified. You must specify either 'vcdDownloadVCard' or 'generateVCardFunction'";
 @Directive({
-  selector: '[vcdDownloadVCard]'
+  selector: '[vcdDownloadVCard]',
 })
 export class DownloadVCardDirective {
   constructor(private element: ElementRef) {}
+  // This property is always specified as it is the selector,
+  // which means it can't be undefined
   @Input('vcdDownloadVCard')
-  vCard!: VCard;
+  vCard!: VCard | '';
+  @Input('generateVCardFunction')
+  generateVCardFunction: (() => VCard) | '' | undefined;
   @Input() public encoding: VCardEncoding = VCardEncoding.none;
 
   @HostListener('click')
   onclick() {
+    if (this.vCard == '') {
+      if (
+        this.generateVCardFunction != undefined &&
+        this.generateVCardFunction != ''
+      ) {
+        this.vCard = this.generateVCardFunction();
+      } else {
+        throw new Error(ERROR_MESSAGE);
+      }
+    }
     const blob = VCardFormatter.getVCardAsBlob(this.vCard, this.encoding);
     let filename = 'vCard';
     if (this.vCard.name != null) {
-      filename = this.vCard.name.firstNames + ' ' + this.vCard.name.lastNames + '.vcf';
+      filename =
+        this.vCard.name.firstNames + ' ' + this.vCard.name.lastNames + '.vcf';
     }
     this.download(blob, filename);
   }
@@ -36,6 +53,16 @@ export class DownloadVCardDirective {
       a.click();
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
+    }
+  }
+
+  ngOnInit() {
+    if (
+      this.vCard == '' &&
+      (this.generateVCardFunction == '' ||
+        this.generateVCardFunction == undefined)
+    ) {
+      throw new Error(ERROR_MESSAGE);
     }
   }
 }

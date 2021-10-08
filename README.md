@@ -55,14 +55,32 @@ export class AppComponent {
       lastNames: "Doe",
     },
   };
+  public generateVCardOnTheFly = (): VCard => {
+    // TODO: Generate the VCard before Download
+    return {
+      name: { firstNames: 'John', lastNames: 'Doe', addtionalNames: 'Auto' },
+    };
+  };
 }
 ```
 
 ```html
 <!-- example.component.html -->
 <div>
-  <button id="downloadButton" [vcdDownloadVCard]="vCard">
+  <!-- Normal -->
+    <button
+    id="downloadButtonNormal"
+    [vcdDownloadVCard]="vCard"
+    >
     Download VCard!
+  </button>
+  <!-- Generate VCard only on Click -->
+  <button
+    id="downloadButtonFunction"
+    vcdDownloadVCard
+    [generateVCardFunction]="generateVCardOnTheFly"
+  >
+    Download generated VCard!
   </button>
 </div>
 ```

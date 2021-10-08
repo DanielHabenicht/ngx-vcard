@@ -1,9 +1,23 @@
 <div>
-  <button id="downloadButton" [vcdDownloadVCard]="vCard" [encoding]="vCardEncoding.none">Download VCard!</button>
+  <!-- Normal -->
+    <button
+    id="downloadButtonNormal"
+    [vcdDownloadVCard]="vCard"
+    [encoding]="vCardEncoding.none"
+    >
+    Download VCard!
+  </button>
+  <!-- Generate VCard only on Click -->
+  <button
+    id="downloadButtonFunction"
+    vcdDownloadVCard
+    [encoding]="vCardEncoding.none"
+    [generateVCardFunction]="generateVCardOnTheFly"
+  >
+    Download generated VCard!
+  </button>
 </div>
+<p>VCard String Preview:</p>
 <p>
-  VCard String Preview:
-</p>
-<p>
-  {{vCardString}}
+  {{ vCardString }}
 </p>
