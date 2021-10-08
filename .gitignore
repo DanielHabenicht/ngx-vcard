@@ -6,7 +6,8 @@
 /out-tsc
 
 # dependencies
-/node_modules
+node_modules
+projects/ngx-vcard/package-lock.json
 
 # IDEs and editors
 /.idea
