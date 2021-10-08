@@ -7,6 +7,7 @@ tasks:
   - init: |
       export NG_CLI_ANALYTICS="ci" 
       npm install
+      npm install -g @angular/cli
       npm run build:app
       gp sync-done install
     # runs on startup
