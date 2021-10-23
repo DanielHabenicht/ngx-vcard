@@ -57,7 +57,7 @@
     "karma-jasmine": "4.0.1",
     "karma-jasmine-html-reporter": "1.7.0",
     "karma-junit-reporter": "2.0.1",
-    "ng-packagr": "12.2.3",
+    "ng-packagr": "12.2.4",
     "protractor": "7.0.0",
     "puppeteer": "10.4.0",
     "semantic-release": "18.0.0",
