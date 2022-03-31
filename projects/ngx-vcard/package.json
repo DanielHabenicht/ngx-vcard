@@ -25,6 +25,6 @@
   },
   "peerDependencies": {
     "@angular/common": ">=5.x <13.3.0",
-    "@angular/core": ">=5.x <13.3.0"
+    "@angular/core": ">=5.x <14.0.0"
   }
 }
