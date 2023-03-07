@@ -45,7 +45,7 @@
     "@types/jasminewd2": "2.0.10",
     "@types/node": "16.11.26",
     "codelyzer": "6.0.2",
-    "commitizen": "4.2.4",
+    "commitizen": "4.3.0",
     "copyfiles": "2.4.1",
     "cz-conventional-changelog": "3.3.0",
     "jasmine-core": "3.99.1",
