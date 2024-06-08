@@ -14,8 +14,6 @@ Maybe other version will be supported.
 If you want to have another Property, please open up an issue or even better
 provide a PR. ;)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/DanielHabenicht/ngx-vcard)
-
 ## Installation
 
 1.  Install from npm
