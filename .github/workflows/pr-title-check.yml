@@ -27,12 +27,12 @@ jobs:
           body-includes: Please make sure that your Pull Request title and body does conform to this format
 
       - name: Create comment
-        if: always() && (steps.fc.outputs.comment-id == 0) && (steps.title-check.outputs.success == 'false')
+        if: always() && (steps.fc.outputs.comment-id == 0) && (steps.title-check.outputs.error_message != null)
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            We are following the [Conventional Commit Format](https://www.conventionalcommits.org/en/v1.0.0/). Please make sure that your Pull Request title and body does conform to this format, otherwise, it might not be released. Here is a short example: 
+            We are following the [Conventional Commit Format](https://www.conventionalcommits.org/en/v1.0.0/). Please make sure that your Pull Request title and body conform to this format, otherwise, it might not be released. Here is a short example: 
             ```
             fix(webapp): correct styling in cool component
             <type>[optional scope]: <description>
@@ -44,10 +44,10 @@ jobs:
             | `feat`    |  introduces a new feature | MINOR (v1.0.0 -> v1.1.0)|
             | `chore` | other non releasing code changes | NONE (v1.0.0 -> v1.0.0|
 
-            In the Pull Request Body please describe what changes for the user of the application. If the user has to do Things different than before (excluding new functionality) please include `BREAKING CHANGE` at the end. This will trigger a major release (v1.0.0 -> v2.0.0)
+            In the Pull Request Body please describe what changes for the user of the application. If the user has to do things differently than before (excluding new functionality) please include `BREAKING CHANGE` at the end. This will trigger a major release (v1.0.0 -> v2.0.0)
 
       - name: Delete comment
-        if: always() && (steps.fc.outputs.comment-id != 0) && (steps.title-check.outputs.success == 'true')
+        if: always() && (steps.fc.outputs.comment-id != 0) && (steps.title-check.outputs.error_message == null)
         uses: actions/github-script@v3
         with:
           script: |
