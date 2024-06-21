@@ -11,7 +11,13 @@ import { nl, e } from './helpers';
 export class VCardFormatter {
   public static getVCardAsBlob(vCard: VCard, encoding: VCardEncoding = VCardEncoding.none): Blob {
     const data = VCardFormatter.getVCardAsString(vCard, encoding);
-    return new Blob([data], { type: 'text/vcard' });
+    // This code will enforce compatibility with ANSI encoding for outlook
+    let uint8 = new Uint8Array(data.length);
+    for (let i = 0; i < uint8.length; i++) {
+      uint8[i] = data.charCodeAt(i);
+    }
+
+    return new Blob([uint8], { type: 'text/vcard' });
   }
 
   /**
