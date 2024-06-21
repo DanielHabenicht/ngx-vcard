@@ -33,13 +33,13 @@ jobs:
           npm install codecov -g
           codecov
         env:
-          CODECOV_TOKEN: $(CODECOV_TOKEN)
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     
       - name: 'release'
         if: github.ref == 'refs/heads/master'
         run: |
           npm run semantic-release
         env:
-          GH_TOKEN: $(GITHUB_PAT)
-          NPM_TOKEN: $(NPM_PAT)
-          NPM_USERNAME: $(NPM_USER)                
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PAT }}
+          NPM_USERNAME: ${{ secrets.NPM_USER }}
