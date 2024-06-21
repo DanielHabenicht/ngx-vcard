@@ -132,3 +132,8 @@ This project is heavily inspired from the
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard?ref=badge_large)
+
+
+# New Version
+
+dropped IE11 support
