@@ -18,23 +18,31 @@ jobs:
           node-version: 14.x
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
           cache: npm
-    
+
       - run: 'npm install'
-    
+
       - run: 'npm run build:lib'
-    
+
       - run: 'npm run test -- --code-coverage'
-        name: 'unit test'  
-    
+        name: 'unit test'
+
       - run: 'npm run e2e'
-    
-      - name: 'publish coverage'
-        run: |
-          npm install codecov -g
-          codecov
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-    
+
+      - uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          files: ./coverage1.xml,./coverage2.xml # optional
+          # flags: unittests # optional
+          # name: codecov-umbrella # optional
+          token: ${{ secrets.CODECOV_TOKEN }} # required
+        # verbose: true # optional (default = false)
+      # - name: 'publish coverage'
+      #   run: |
+      #     npm install codecov -g
+      #     codecov
+      #   env:
+      #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
       - name: 'release'
         if: github.ref == 'refs/heads/master'
         run: |
