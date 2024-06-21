@@ -18,7 +18,9 @@
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
     "test-docker": "npm run docker-build && docker run --rm build_vcard npm run test",
-    "docker-build": "docker build -t build_vcard ."
+    "docker-build": "docker build -t build_vcard .",
+    "update": "ng update @angular/core@14 @angular/cli@14"
+
   },
   "private": false,
   "dependencies": {
@@ -37,7 +39,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.3.11",
-    "@angular/cli": "13.3.11",
+    "@angular/cli": "^14.2.13",
     "@angular/compiler-cli": "13.4.0",
     "@angular/language-service": "13.4.0",
     "@types/jasmine": "3.10.18",
