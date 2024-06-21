@@ -155,7 +155,6 @@
       }
     }
   },
-  "defaultProject": "ngx-vcard-app",
   "cli": {
     "analytics": false
   }
