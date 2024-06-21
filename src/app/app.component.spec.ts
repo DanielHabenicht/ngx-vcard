@@ -1,6 +1,10 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { NgxVcardModule } from 'ngx-vcard';
+
+import {
+  NgxVcardModule
+} from "projects/ngx-vcard/src/public_api";
+// import { NgxVcardModule } from 'ngx-vcard';
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
