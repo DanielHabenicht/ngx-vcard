@@ -19,7 +19,8 @@
     "semantic-release": "semantic-release",
     "test-docker": "npm run docker-build && docker run --rm build_vcard npm run test",
     "docker-build": "docker build -t build_vcard .",
-    "update": "ng update @angular/core@14 @angular/cli@14"
+    "update": "ng update @angular/core@14 @angular/cli@14",
+    "postinstall": "npx puppeteer browsers install chrome"
   },
   "private": false,
   "dependencies": {
@@ -51,15 +52,15 @@
     "jasmine-core": "3.99.1",
     "jasmine-reporters": "2.5.2",
     "jasmine-spec-reporter": "7.0.0",
-    "karma": "6.4.2",
+    "karma": "6.4.3",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage-istanbul-reporter": "3.0.3",
-    "karma-jasmine": "4.0.2",
+    "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "1.7.0",
     "karma-junit-reporter": "2.0.1",
     "ng-packagr": "17.3.0",
     "protractor": "7.0.0",
-    "puppeteer": "10.4.0",
+    "puppeteer": "22.12.0",
     "semantic-release": "19.0.5",
     "ts-node": "10.9.2",
     "tslint": "6.1.3",
