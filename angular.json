@@ -77,7 +77,8 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "karmaConfig": "karma.conf.js",
+            "codeCoverage": true,
             "styles": [
               "src/styles.css"
             ],
@@ -135,12 +136,13 @@
           "options": {
             "main": "projects/ngx-vcard/src/test.ts",
             "tsConfig": "projects/ngx-vcard/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-vcard/karma.conf.js",
             "sourceMap": true,
             "polyfills": [
               "zone.js",
               "zone.js/testing"
-            ]
+            ],
+            "karmaConfig": "projects/ngx-vcard/karma.conf.js",
+            "codeCoverage": true
           }
         }
       }

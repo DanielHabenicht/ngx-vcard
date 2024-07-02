@@ -23,7 +23,7 @@ jobs:
 
       - run: 'npm run build:lib'
 
-      - run: 'npm run test -- --code-coverage'
+      - run: 'npm run test'
         name: 'unit test'
 
       - name: Install Playwright Browsers
@@ -46,13 +46,8 @@ jobs:
           # flags: unittests # optional
           # name: codecov-umbrella # optional
           token: ${{ secrets.CODECOV_TOKEN }} # required
-        # verbose: true # optional (default = false)
-      # - name: 'publish coverage'
-      #   run: |
-      #     npm install codecov -g
-      #     codecov
-      #   env:
-      #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true # optional (default = false)
+
 
       - name: 'release'
         if: github.ref == 'refs/heads/master'
