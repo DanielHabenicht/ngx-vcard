@@ -24,7 +24,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: "github-actions[bot]"
-          body-includes: Please make sure that your Pull Request title and body does conform to this format
+          body-includes: Please make sure that your Pull Request title and body conform to this format
 
       - name: Create comment
         if: always() && (steps.fc.outputs.comment-id == 0) && (steps.title-check.outputs.error_message != null)
