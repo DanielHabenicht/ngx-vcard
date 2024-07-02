@@ -19,7 +19,7 @@ jobs:
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
           cache: npm
 
-      - run: 'npm install'
+      - run: 'npm ci'
 
       - run: 'npm run build:lib'
 
