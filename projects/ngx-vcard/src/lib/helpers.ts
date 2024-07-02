@@ -7,7 +7,6 @@ export function e(value: string | undefined): string {
       value = '' + value;
     }
 
-    
     return (
       value
         // From https://datatracker.ietf.org/doc/html/rfc6350
@@ -35,11 +34,9 @@ export function e(value: string | undefined): string {
         //  encoded by two characters: a BACKSLASH followed by either an 'n'
         //  (U+006E) or an 'N' (U+004E).
         .replace(/\n/g, '\\n')
-        
-        //  In all other cases, escaping MUST NOT be used.
-    );
 
-   
+      //  In all other cases, escaping MUST NOT be used.
+    );
   }
   return '';
 }
