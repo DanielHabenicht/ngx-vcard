@@ -57,8 +57,8 @@ VERSION:4.0
 FN:Forrest Gump
 N:Gump;Forrest;;Mr.;
 ORG:Bubba Gump Shrimp Co.
-ADR;TYPE=work;PREF=1;LABEL="100 Waters Edge\nBaytown\, LA 30314\nUnited States of America":;;100 Waters Edge;Baytown;LA;30314;United States of America
-ADR;TYPE=home;LABEL="42 Plantation St.\nBaytown\, LA 30314\nUnited States of America":;;42 Plantation St.;Baytown;LA;30314;United States of America
+ADR;TYPE=work;PREF=1;LABEL="100 Waters Edge\\nBaytown\, LA 30314\\nUnited States of America":;;100 Waters Edge;Baytown;LA;30314;United States of America
+ADR;TYPE=home;LABEL="42 Plantation St.\\nBaytown\, LA 30314\\nUnited States of America":;;42 Plantation St.;Baytown;LA;30314;United States of America
 TEL;VALUE=uri;TYPE="work,voice":tel:+1-111-555-1212
 TEL;VALUE=uri;TYPE="home,voice":tel:+1-404-555-1212
 EMAIL:forrestgump@example.com
