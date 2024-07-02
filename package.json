@@ -16,7 +16,8 @@
     "playwright": "playwright test",
     "copy-files": "npm run copy-license && npm run copy-readme",
     "semantic-release": "semantic-release",
-    "postinstall": "npx puppeteer browsers install chrome"
+    "postinstall": "npx puppeteer browsers install chrome",
+    "format": "prettier -w ./"
   },
   "private": false,
   "dependencies": {
@@ -50,11 +51,12 @@
     "jasmine-reporters": "2.5.2",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.3",
-    "karma-coverage": "^2.2.1",
     "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "^2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "1.7.0",
     "ng-packagr": "17.3.0",
+    "prettier": "^3.3.2",
     "protractor": "7.0.0",
     "puppeteer": "22.12.0",
     "semantic-release": "19.0.5",
