@@ -54,7 +54,7 @@ jobs:
       - uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
-          directory: ./coverage,./test-results
+          directory: ./coverage
           # files: ./coverage1.xml,./coverage2.xml # optional
           # flags: unittests # optional
           # name: codecov-umbrella # optional
