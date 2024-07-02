@@ -21,9 +21,9 @@ module.exports = function(config) {
       reports: ['html', 'lcovonly', 'text-summary', 'cobertura'],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml', 'junit'],
+    reporters: ['progress', 'kjhtml', 'junit', 'coverage'],
     junitReporter: {
-      outputDir: '../../junit'
+      outputDir: '../junit'
     },
     port: 9876,
     colors: true,
