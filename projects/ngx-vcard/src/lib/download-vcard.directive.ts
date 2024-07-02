@@ -6,7 +6,7 @@ import { VCardEncoding } from './types/vCardEncoding';
 const ERROR_MESSAGE =
   "ngx-vcard: No input specified. You must specify either 'vcdDownloadVCard' or 'generateVCardFunction'";
 
-  // TODO: Remove @Directive
+// TODO: Remove @Directive
 @Directive({
   selector: '[vcdDownloadVCard]',
 })
