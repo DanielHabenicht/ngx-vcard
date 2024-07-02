@@ -23,14 +23,14 @@ jobs:
 
       - run: 'npm run build:lib'
 
-      - run: 'npm run test'
-        name: 'unit test'
+      - name: 'unit test'
+        run: 'npm run test'
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npm run playwright
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -42,7 +42,7 @@ jobs:
       - uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
-          directory: ./coverage
+          directory: ./coverage,./test-results
           # files: ./coverage1.xml,./coverage2.xml # optional
           # flags: unittests # optional
           # name: codecov-umbrella # optional
