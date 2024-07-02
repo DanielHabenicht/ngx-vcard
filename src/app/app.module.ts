@@ -10,6 +10,6 @@ import { NgxVcardModule } from 'projects/ngx-vcard/src/lib/ngx-vcard.module';
   declarations: [AppComponent],
   imports: [BrowserModule, NgxVcardModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

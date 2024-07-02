@@ -4,6 +4,6 @@ import { DownloadVCardDirective } from './download-vcard.directive';
 @NgModule({
   imports: [],
   declarations: [DownloadVCardDirective],
-  exports: [DownloadVCardDirective]
+  exports: [DownloadVCardDirective],
 })
-export class NgxVcardModule { }
+export class NgxVcardModule {}

@@ -9,7 +9,10 @@ import {
 import { nl, e } from './helpers';
 
 export class VCardFormatter {
-  public static getVCardAsBlob(vCard: VCard, encoding: VCardEncoding = VCardEncoding.none): Blob {
+  public static getVCardAsBlob(
+    vCard: VCard,
+    encoding: VCardEncoding = VCardEncoding.none,
+  ): Blob {
     const data = VCardFormatter.getVCardAsString(vCard, encoding);
     return new Blob([data], { type: 'text/vcard' });
   }
@@ -17,7 +20,10 @@ export class VCardFormatter {
   /**
    * Get formatted vCard in VCF format
    */
-  public static getVCardAsString(vCard: VCard, encodingPrefix: VCardEncoding = VCardEncoding.none): string {
+  public static getVCardAsString(
+    vCard: VCard,
+    encodingPrefix: VCardEncoding = VCardEncoding.none,
+  ): string {
     if (!vCard.version) {
       vCard.version = '4.0';
     }
@@ -35,14 +41,23 @@ export class VCardFormatter {
 
     let nameArray = [];
     if (vCard.formattedName != null) {
-      nameArray = [vCard.formattedName.firstNames, vCard.formattedName.addtionalNames, vCard.formattedName.lastNames];
+      nameArray = [
+        vCard.formattedName.firstNames,
+        vCard.formattedName.addtionalNames,
+        vCard.formattedName.lastNames,
+      ];
     } else {
-      nameArray = [vCard.name.firstNames, vCard.name.addtionalNames, vCard.name.lastNames];
+      nameArray = [
+        vCard.name.firstNames,
+        vCard.name.addtionalNames,
+        vCard.name.lastNames,
+      ];
     }
 
     formattedName = nameArray.filter((string) => string != null).join(' ');
 
-    formattedVCardString += 'FN' + encodingPrefix + ':' + e(formattedName) + nl();
+    formattedVCardString +=
+      'FN' + encodingPrefix + ':' + e(formattedName) + nl();
 
     formattedVCardString +=
       'N' +
@@ -58,7 +73,8 @@ export class VCardFormatter {
       nl();
 
     if (vCard.nickname && majorVersion >= 3) {
-      formattedVCardString += 'NICKNAME' + encodingPrefix + ':' + e(vCard.nickname) + nl();
+      formattedVCardString +=
+        'NICKNAME' + encodingPrefix + ':' + e(vCard.nickname) + nl();
     }
 
     if (vCard.gender) {
@@ -74,7 +90,8 @@ export class VCardFormatter {
     }
 
     if (vCard.uid) {
-      formattedVCardString += 'UID' + encodingPrefix + ':' + e(vCard.uid) + nl();
+      formattedVCardString +=
+        'UID' + encodingPrefix + ':' + e(vCard.uid) + nl();
     }
 
     if (vCard.birthday) {
@@ -82,13 +99,19 @@ export class VCardFormatter {
     }
 
     if (vCard.anniversary) {
-      formattedVCardString += 'ANNIVERSARY:' + YYYYMMDD(vCard.anniversary) + nl();
+      formattedVCardString +=
+        'ANNIVERSARY:' + YYYYMMDD(vCard.anniversary) + nl();
     }
 
     if (vCard.language) {
       vCard.language.forEach((language) => {
         if (isPropertyWithParameters(language)) {
-          formattedVCardString += 'LANG' + propertyToVCardString(language.param) + ':' + e(language.value) + nl();
+          formattedVCardString +=
+            'LANG' +
+            propertyToVCardString(language.param) +
+            ':' +
+            e(language.value) +
+            nl();
         } else {
           formattedVCardString += 'LANG:' + e(language) + nl();
         }
@@ -98,9 +121,14 @@ export class VCardFormatter {
     if (vCard.organization) {
       if (isPropertyWithParameters(vCard.organization)) {
         formattedVCardString +=
-          'ORG' + propertyToVCardString(vCard.organization.param) + ':' + e(vCard.organization.value) + nl();
+          'ORG' +
+          propertyToVCardString(vCard.organization.param) +
+          ':' +
+          e(vCard.organization.value) +
+          nl();
       } else {
-        formattedVCardString += 'ORG' + encodingPrefix + ':' + e(vCard.organization) + nl();
+        formattedVCardString +=
+          'ORG' + encodingPrefix + ':' + e(vCard.organization) + nl();
       }
     }
 
@@ -129,14 +157,23 @@ export class VCardFormatter {
           };
         }
         formattedVCardString +=
-          'TEL' + propertyToVCardString(element.param as BasicPropertyParameters) + ':' + e(element.value) + nl();
+          'TEL' +
+          propertyToVCardString(element.param as BasicPropertyParameters) +
+          ':' +
+          e(element.value) +
+          nl();
       });
     }
 
     if (vCard.email) {
       vCard.email.forEach((email) => {
         if (isPropertyWithParameters(email)) {
-          formattedVCardString += 'EMAIL' + propertyToVCardString(email.param) + ':' + e(email.value) + nl();
+          formattedVCardString +=
+            'EMAIL' +
+            propertyToVCardString(email.param) +
+            ':' +
+            e(email.value) +
+            nl();
         } else {
           formattedVCardString += 'EMAIL:' + e(email) + nl();
         }
@@ -144,12 +181,18 @@ export class VCardFormatter {
     }
 
     if (vCard.title) {
-      formattedVCardString += 'TITLE' + encodingPrefix + ':' + e(vCard.title) + nl();
+      formattedVCardString +=
+        'TITLE' + encodingPrefix + ':' + e(vCard.title) + nl();
     }
 
     if (vCard.logo) {
       if (isPropertyWithParameters(vCard.logo)) {
-        formattedVCardString += 'LOGO' + propertyToVCardString(vCard.logo.param) + ':' + e(vCard.logo.value) + nl();
+        formattedVCardString +=
+          'LOGO' +
+          propertyToVCardString(vCard.logo.param) +
+          ':' +
+          e(vCard.logo.value) +
+          nl();
       } else {
         formattedVCardString += 'LOGO:' + e(vCard.logo) + nl();
       }
@@ -157,7 +200,12 @@ export class VCardFormatter {
 
     if (vCard.photo) {
       if (isPropertyWithParameters(vCard.photo)) {
-        formattedVCardString += 'PHOTO' + propertyToVCardString(vCard.photo.param) + ':' + e(vCard.photo.value) + nl();
+        formattedVCardString +=
+          'PHOTO' +
+          propertyToVCardString(vCard.photo.param) +
+          ':' +
+          e(vCard.photo.value) +
+          nl();
       } else {
         formattedVCardString += 'PHOTO:' + e(vCard.photo) + nl();
       }
@@ -166,7 +214,8 @@ export class VCardFormatter {
     if (vCard.homeFax) {
       vCard.homeFax.forEach(function (number) {
         if (+majorVersion >= 4) {
-          formattedVCardString += 'TEL;VALUE=uri;TYPE="fax,home":tel:' + e(number) + nl();
+          formattedVCardString +=
+            'TEL;VALUE=uri;TYPE="fax,home":tel:' + e(number) + nl();
         } else {
           formattedVCardString += 'TEL;TYPE=HOME,FAX:' + e(number) + nl();
         }
@@ -176,7 +225,8 @@ export class VCardFormatter {
     if (vCard.workFax) {
       vCard.workFax.forEach(function (number) {
         if (+majorVersion >= 4) {
-          formattedVCardString += 'TEL;VALUE=uri;TYPE="fax,work":tel:' + e(number) + nl();
+          formattedVCardString +=
+            'TEL;VALUE=uri;TYPE="fax,work":tel:' + e(number) + nl();
         } else {
           formattedVCardString += 'TEL;TYPE=WORK,FAX:' + e(number) + nl();
         }
@@ -184,34 +234,53 @@ export class VCardFormatter {
     }
 
     if (vCard.role) {
-      formattedVCardString += 'ROLE' + encodingPrefix + ':' + e(vCard.role) + nl();
+      formattedVCardString +=
+        'ROLE' + encodingPrefix + ':' + e(vCard.role) + nl();
     }
 
     if (vCard.url) {
       let urlNotSet = true;
       if (hasProp(vCard.url, 'home')) {
-        formattedVCardString += 'URL;type=HOME' + encodingPrefix + ':' + e((vCard.url as { home: string }).home) + nl();
+        formattedVCardString +=
+          'URL;type=HOME' +
+          encodingPrefix +
+          ':' +
+          e((vCard.url as { home: string }).home) +
+          nl();
         urlNotSet = false;
       }
 
       if (hasProp(vCard.url, 'work')) {
-        formattedVCardString += 'URL;type=WORK' + encodingPrefix + ':' + e((vCard.url as { work: string }).work) + nl();
+        formattedVCardString +=
+          'URL;type=WORK' +
+          encodingPrefix +
+          ':' +
+          e((vCard.url as { work: string }).work) +
+          nl();
         urlNotSet = false;
       }
       if (urlNotSet) {
-        formattedVCardString += 'URL' + encodingPrefix + ':' + e(vCard.url as string) + nl();
+        formattedVCardString +=
+          'URL' + encodingPrefix + ':' + e(vCard.url as string) + nl();
       }
     }
 
     if (vCard.note) {
-      formattedVCardString += 'NOTE' + encodingPrefix + ':' + e(vCard.note) + nl();
+      formattedVCardString +=
+        'NOTE' + encodingPrefix + ':' + e(vCard.note) + nl();
     }
 
     if (vCard.socialUrls) {
       for (const key in vCard.socialUrls) {
         if (vCard.socialUrls.hasOwnProperty(key) && vCard.socialUrls[key]) {
           formattedVCardString +=
-            'X-SOCIALPROFILE' + encodingPrefix + ';TYPE=' + key + ':' + e(vCard.socialUrls[key]) + nl();
+            'X-SOCIALPROFILE' +
+            encodingPrefix +
+            ';TYPE=' +
+            key +
+            ':' +
+            e(vCard.socialUrls[key]) +
+            nl();
         }
       }
     }
@@ -219,9 +288,15 @@ export class VCardFormatter {
     if (vCard.source) {
       if (isPropertyWithParameters(vCard.source)) {
         formattedVCardString +=
-          'SOURCE' + encodingPrefix + propertyToVCardString(vCard.source.param) + ':' + e(vCard.source.value) + +nl();
+          'SOURCE' +
+          encodingPrefix +
+          propertyToVCardString(vCard.source.param) +
+          ':' +
+          e(vCard.source.value) +
+          +nl();
       } else {
-        formattedVCardString += 'SOURCE' + encodingPrefix + ':' + e(vCard.source) + nl();
+        formattedVCardString +=
+          'SOURCE' + encodingPrefix + ':' + e(vCard.source) + nl();
       }
     }
     if (vCard.rev) {
@@ -243,7 +318,7 @@ function getFormattedPhoto(
   url: string,
   mediaType: string,
   base64: boolean,
-  majorVersion: number
+  majorVersion: number,
 ) {
   let params;
 

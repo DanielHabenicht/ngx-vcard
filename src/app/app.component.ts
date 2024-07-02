@@ -4,7 +4,7 @@ import {
   VCard,
   VCardEncoding,
   VCardFormatter,
-} from "projects/ngx-vcard/src/public_api";
+} from 'projects/ngx-vcard/src/public_api';
 // import { VCard, VCardEncoding, VCardFormatter } from 'ngx-vcard';
 
 @Component({

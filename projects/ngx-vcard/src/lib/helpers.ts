@@ -6,10 +6,7 @@ export function e(value: string | undefined): string {
     if (typeof value !== 'string') {
       value = '' + value;
     }
-    return value
-      .replace(/\n/g, '\n')
-      .replace(/,/g, ',')
-      .replace(/;/g, ';');
+    return value.replace(/\n/g, '\n').replace(/,/g, ',').replace(/;/g, ';');
   }
   return '';
 }

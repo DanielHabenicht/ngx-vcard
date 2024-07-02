@@ -24,21 +24,12 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
+    "lib": ["ES2022", "dom"],
     "paths": {
-      "ngx-vcard": [
-        "./dist/ngx-vcard"
-      ],
-      "ngx-vcard/*": [
-        "./dist/ngx-vcard/*"
-      ]
+      "ngx-vcard": ["./dist/ngx-vcard"],
+      "ngx-vcard/*": ["./dist/ngx-vcard/*"]
     },
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "typeRoots": ["node_modules/@types"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

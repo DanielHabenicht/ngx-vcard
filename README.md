@@ -67,17 +67,9 @@ export class AppComponent {
 <!-- example.component.html -->
 <div>
   <!-- Normal -->
-  <button id="downloadButtonNormal" [vcdDownloadVCard]="vCard">
-    Download VCard!
-  </button>
+  <button id="downloadButtonNormal" [vcdDownloadVCard]="vCard">Download VCard!</button>
   <!-- Generate VCard only on Click -->
-  <button
-    id="downloadButtonFunction"
-    vcdDownloadVCard
-    [generateVCardFunction]="generateVCardOnTheFly"
-  >
-    Download generated VCard!
-  </button>
+  <button id="downloadButtonFunction" vcdDownloadVCard [generateVCardFunction]="generateVCardOnTheFly">Download generated VCard!</button>
 </div>
 ```
 
@@ -132,7 +124,6 @@ This project is heavily inspired from the
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard?ref=badge_large)
-
 
 # New Version
 

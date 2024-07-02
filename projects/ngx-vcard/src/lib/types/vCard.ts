@@ -1,4 +1,4 @@
-import { BasicPropertyParameters } from "./parameter/BasicPropertyParameters.type";
+import { BasicPropertyParameters } from './parameter/BasicPropertyParameters.type';
 
 /**
  * vCard interface with properties for the vCard format, which allows the capture and exchange of
@@ -21,7 +21,7 @@ export interface VCard {
    * The kind of object the vCard represents.
    * @kind KIND
    */
-  kind?: "individual" | "group" | "org" | "location";
+  kind?: 'individual' | 'group' | 'org' | 'location';
   /**
    * Include extended XML-encoded vCard data in a plain vCard.
    * @kind XML
@@ -182,26 +182,26 @@ export interface VCard {
    */
   related?: {
     type:
-      | "contact"
-      | "acquaintance"
-      | "friend"
-      | "met"
-      | "co-worker"
-      | "colleague"
-      | "co-resident"
-      | "neighbor"
-      | "child"
-      | "parent"
-      | "sibling"
-      | "spouse"
-      | "kin"
-      | "muse"
-      | "crush"
-      | "date"
-      | "sweetheart"
-      | "me"
-      | "agent"
-      | "emergency";
+      | 'contact'
+      | 'acquaintance'
+      | 'friend'
+      | 'met'
+      | 'co-worker'
+      | 'colleague'
+      | 'co-resident'
+      | 'neighbor'
+      | 'child'
+      | 'parent'
+      | 'sibling'
+      | 'spouse'
+      | 'kin'
+      | 'muse'
+      | 'crush'
+      | 'date'
+      | 'sweetheart'
+      | 'me'
+      | 'agent'
+      | 'emergency';
     value: string;
   }[];
 
@@ -367,7 +367,7 @@ export interface Gender {
    * @description
    * M stands for "male", F stands for "female", O stands for "other", N stands for "none or not applicable", U stands for "unknown".
    */
-  sex?: "M" | "F" | "O" | "N" | "U";
+  sex?: 'M' | 'F' | 'O' | 'N' | 'U';
 
   /**
    * Gender identity
