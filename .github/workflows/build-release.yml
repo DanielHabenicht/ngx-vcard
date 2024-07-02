@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v4.0.2
         with:
           # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
-          node-version: 14.x
+          node-version: 18.x
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
           cache: npm
 
