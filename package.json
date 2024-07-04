@@ -47,7 +47,7 @@
     "commitizen": "4.3.0",
     "copyfiles": "2.4.1",
     "cz-conventional-changelog": "3.3.0",
-    "jasmine-core": "3.99.1",
+    "jasmine-core": "5.1.2",
     "jasmine-reporters": "2.5.2",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.3",
