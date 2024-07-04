@@ -26,7 +26,8 @@ describe('NgxVcardFormatter', () => {
       address: [
         {
           value: {
-            label: '100 Waters Edge\nBaytown, LA 30314\nUnited States of America',
+            label:
+              '100 Waters Edge\nBaytown, LA 30314\nUnited States of America',
             street: '100 Waters Edge',
             locality: 'Baytown',
             postalCode: '30314',
@@ -37,7 +38,8 @@ describe('NgxVcardFormatter', () => {
         },
         {
           value: {
-            label: '42 Plantation St.\nBaytown, LA 30314\nUnited States of America',
+            label:
+              '42 Plantation St.\nBaytown, LA 30314\nUnited States of America',
             street: '42 Plantation St.',
             locality: 'Baytown',
             postalCode: '30314',
@@ -55,8 +57,8 @@ VERSION:4.0
 FN:Forrest Gump
 N:Gump;Forrest;;Mr.;
 ORG:Bubba Gump Shrimp Co.
-ADR;TYPE=work;PREF=1;LABEL="100 Waters Edge\nBaytown\, LA 30314\nUnited States of America":;;100 Waters Edge;Baytown;LA;30314;United States of America
-ADR;TYPE=home;LABEL="42 Plantation St.\nBaytown\, LA 30314\nUnited States of America":;;42 Plantation St.;Baytown;LA;30314;United States of America
+ADR;TYPE=work;PREF=1;LABEL="100 Waters Edge\\nBaytown\, LA 30314\\nUnited States of America":;;100 Waters Edge;Baytown;LA;30314;United States of America
+ADR;TYPE=home;LABEL="42 Plantation St.\\nBaytown\, LA 30314\\nUnited States of America":;;42 Plantation St.;Baytown;LA;30314;United States of America
 TEL;VALUE=uri;TYPE="work,voice":tel:+1-111-555-1212
 TEL;VALUE=uri;TYPE="home,voice":tel:+1-404-555-1212
 EMAIL:forrestgump@example.com
@@ -64,7 +66,7 @@ TITLE:Shrimp Man
 PHOTO;MEDIATYPE=image/gif:http://www.example.com/dir_photos/my_photo.gif
 REV:20080424T195243Z
 END:VCARD
-`
+`,
     );
   });
 
@@ -81,7 +83,7 @@ FN:John Doe
 N:Doe;John;;;
 TEL;TYPE=voice:+1234567890
 END:VCARD
-`
+`,
     );
   });
 
@@ -105,7 +107,7 @@ FN:John Doe
 N:Doe;John;;;
 TEL;TYPE=work:+1234567890
 END:VCARD
-`
+`,
     );
   });
 
@@ -118,7 +120,7 @@ VERSION:4.0
 FN:
 N:;;;;
 END:VCARD
-`
+`,
     );
   });
 
@@ -136,7 +138,9 @@ END:VCARD
       name: { firstNames: 'John', lastNames: 'Doe' },
       organization: 'Example.com Inc.',
       title: 'Imaginary test person',
-      email: [{ value: 'johnDoe@example.org', param: { type: ['work', 'cell'] } }],
+      email: [
+        { value: 'johnDoe@example.org', param: { type: ['work', 'cell'] } },
+      ],
     };
     expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
       `BEGIN:VCARD
@@ -164,7 +168,7 @@ item5.X-ABLabel:_$!<Friend>!$_
 CATEGORIES:Work,Test group
 X-ABUID:5AD380FD-B2DE-4261-BA99-DE1D1DB52FBE\:ABPerson
 END:VCARD
-`
+`,
     );
   });
 
@@ -209,7 +213,9 @@ END:VCARD
         },
       ],
 
-      email: [{ value: 'simon.perreault@viagenie.ca', param: { type: 'work' } }],
+      email: [
+        { value: 'simon.perreault@viagenie.ca', param: { type: 'work' } },
+      ],
       geoPosition: '',
       photo: {
         value: 'http://www.example.com/dir_photos/my_photo.gif',
@@ -253,7 +259,7 @@ FN:
 N:;;;;
 ADR:;;1 Apple Park Way;;;;
 END:VCARD
-`
+`,
     );
   });
 
@@ -279,7 +285,7 @@ FN:
 N:;;;;
 ADR;LABEL="1 Apple Park Way":;;100 Waters Edge;Baytown;LA;30314;United States of America
 END:VCARD
-`
+`,
     );
   });
 });

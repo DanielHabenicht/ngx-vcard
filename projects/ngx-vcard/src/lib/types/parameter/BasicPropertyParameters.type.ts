@@ -161,7 +161,17 @@ export interface BasicPropertyParameters {
    * @link https://tools.ietf.org/html/rfc6350#section-5.6
    */
   type?:
-    | Array<'work' | 'home' | 'text' | 'voice' | 'fax' | 'cell' | 'video' | 'pager' | 'textphone'>
+    | Array<
+        | 'work'
+        | 'home'
+        | 'text'
+        | 'voice'
+        | 'fax'
+        | 'cell'
+        | 'video'
+        | 'pager'
+        | 'textphone'
+      >
     | 'work'
     | 'home'
     | 'text'
@@ -204,7 +214,9 @@ export interface BasicPropertyParameters {
   timezone?: string;
 }
 
-export function propertyToVCardString(property: BasicPropertyParameters): string {
+export function propertyToVCardString(
+  property: BasicPropertyParameters,
+): string {
   let str = '';
   if (property.language) {
     str += ';LANGUAGE=' + e(property.language);
@@ -216,14 +228,15 @@ export function propertyToVCardString(property: BasicPropertyParameters): string
     str += ';ALTID=' + e(property.altid);
   }
   if (property.pid) {
-    str += ';PID=' + property.pid.map(s => e(s)).join(',');
+    str += ';PID=' + property.pid.map((s) => e(s)).join(',');
   }
   if (property.type) {
     if (Array.isArray(property.type)) {
       if (property.type.length === 1) {
         str += ';TYPE=' + property.type[0];
       } else {
-        str += ';TYPE="' + property.type.map(s => s.toLowerCase()).join(',') + '"';
+        str +=
+          ';TYPE="' + property.type.map((s) => s.toLowerCase()).join(',') + '"';
       }
     } else {
       str += ';TYPE=' + property.type;
@@ -239,7 +252,7 @@ export function propertyToVCardString(property: BasicPropertyParameters): string
     str += ';CALSCALE=' + e(property.calscale);
   }
   if (property.sortas) {
-    str += ';SORT-AS="' + property.sortas.map(s => e(s)).join(',') + '"';
+    str += ';SORT-AS="' + property.sortas.map((s) => e(s)).join(',') + '"';
   }
   if (property.geo) {
     str += ';GEO=' + e(property.geo);
@@ -251,7 +264,9 @@ export function propertyToVCardString(property: BasicPropertyParameters): string
   return str;
 }
 
-export function isPropertyWithParameters(object: any): object is { value?: string; param?: BasicPropertyParameters } {
+export function isPropertyWithParameters(
+  object: any,
+): object is { value?: string; param?: BasicPropertyParameters } {
   const test = <{ value?: string; param?: BasicPropertyParameters }>object;
   if (test == null || test.param == null || test.value == null) {
     return false;
@@ -272,7 +287,7 @@ export function isPropertyWithParameters(object: any): object is { value?: strin
 }
 
 export function isPropertyWithParametersAddressValue(
-  object: any
+  object: any,
 ): object is { value?: Address; param?: BasicPropertyParameters } {
   const test = <{ value?: Address; param?: BasicPropertyParameters }>object;
   if (test == null || test.param == null || test.value == null) {

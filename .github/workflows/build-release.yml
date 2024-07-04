@@ -15,26 +15,53 @@ jobs:
         uses: actions/setup-node@v4.0.2
         with:
           # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
-          node-version: 14.x
+          node-version: 18.x
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
           cache: npm
-    
-      - run: 'npm install'
-    
+
+      - run: 'npm ci'
+
       - run: 'npm run build:lib'
-    
-      - run: 'npm run test -- --code-coverage'
-        name: 'unit test'  
-    
-      - run: 'npm run e2e'
-    
-      - name: 'publish coverage'
-        run: |
-          npm install codecov -g
-          codecov
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-    
+
+      - name: 'unit test'
+        run: 'npm run test'
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+      
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm run playwright
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      - uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          directory: ./coverage
+          # files: ./coverage1.xml,./coverage2.xml # optional
+          # flags: unittests # optional
+          # name: codecov-umbrella # optional
+          token: ${{ secrets.CODECOV_TOKEN }} # required
+          verbose: true # optional (default = false)
+
+
       - name: 'release'
         if: github.ref == 'refs/heads/master'
         run: |

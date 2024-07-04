@@ -5,6 +5,8 @@ import { VCardEncoding } from './types/vCardEncoding';
 
 const ERROR_MESSAGE =
   "ngx-vcard: No input specified. You must specify either 'vcdDownloadVCard' or 'generateVCardFunction'";
+
+// TODO: Remove @Directive
 @Directive({
   selector: '[vcdDownloadVCard]',
 })
@@ -40,20 +42,15 @@ export class DownloadVCardDirective {
   }
 
   private download(data: Blob, filename: string) {
-    // IE 11
-    if (window.navigator.msSaveBlob) {
-      window.navigator.msSaveBlob(data, filename);
-    } else {
-      const a: HTMLAnchorElement = document.createElement('a');
-      const url = URL.createObjectURL(data);
-      (a as any).style.display = 'none';
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    }
+    const a: HTMLAnchorElement = document.createElement('a');
+    const url = URL.createObjectURL(data);
+    (a as any).style.display = 'none';
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
   }
 
   ngOnInit() {

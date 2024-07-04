@@ -1,0 +1,20 @@
+<testsuites id="" name="" tests="6" failures="0" skipped="0" errors="0" time="12.541458">
+<testsuite name="e2e.spec.ts" timestamp="2024-06-27T13:34:35.416Z" hostname="chromium" tests="2" failures="0" skipped="0" time="0.729" errors="0">
+<testcase name="check download button " classname="e2e.spec.ts" time="0.441">
+</testcase>
+<testcase name="check donwload function" classname="e2e.spec.ts" time="0.288">
+</testcase>
+</testsuite>
+<testsuite name="e2e.spec.ts" timestamp="2024-06-27T13:34:35.416Z" hostname="firefox" tests="2" failures="0" skipped="0" time="2.481" errors="0">
+<testcase name="check download button " classname="e2e.spec.ts" time="1.608">
+</testcase>
+<testcase name="check donwload function" classname="e2e.spec.ts" time="0.873">
+</testcase>
+</testsuite>
+<testsuite name="e2e.spec.ts" timestamp="2024-06-27T13:34:35.416Z" hostname="webkit" tests="2" failures="0" skipped="0" time="1.09" errors="0">
+<testcase name="check download button " classname="e2e.spec.ts" time="0.601">
+</testcase>
+<testcase name="check donwload function" classname="e2e.spec.ts" time="0.489">
+</testcase>
+</testsuite>
+</testsuites>

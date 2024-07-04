@@ -26,7 +26,7 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require("path").join(__dirname, "../../coverage/ngx-vcard"),
+      dir: require("path").join(__dirname, "./coverage/ngx-vcard-app"),
       reporters: [
         { type: "html" },
         { type: "text-summary" },
