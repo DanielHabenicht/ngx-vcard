@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 // For easier development you can use this line:
-import {
-  VCard,
-  VCardEncoding,
-  VCardFormatter,
-} from 'projects/ngx-vcard/src/public_api';
-// import { VCard, VCardEncoding, VCardFormatter } from 'ngx-vcard';
+// import {
+//   VCard,
+//   VCardEncoding,
+//   VCardFormatter,
+// } from 'projects/ngx-vcard/src/public_api';
+import { VCard, VCardEncoding, VCardFormatter } from 'ngx-vcard';
+
 
 @Component({
   selector: 'app-root',

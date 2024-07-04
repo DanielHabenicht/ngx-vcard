@@ -26,6 +26,9 @@ jobs:
       - name: 'unit test'
         run: 'npm run test'
 
+      - name: 'prepare test'
+        run: 'npm link dist/ngx-vcard/'
+
       - name: Get installed Playwright version
         id: playwright-version
         run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
