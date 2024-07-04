@@ -125,6 +125,15 @@ This project is heavily inspired from the
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDanielHabenicht%2Fngx-vcard?ref=badge_large)
 
-# New Version
+# Angular Version Compatibility
 
-dropped IE11 support
+> There is already a newer Angular Version than listed here?
+> Install the latest version of this package with `npm install ngx-vcard --legacy-peer-deps` or add it via [overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides).
+> Report your findings as an [issue](https://github.com/DanielHabenicht/ngx-vcard/issues/new/choose) so I can add support or fix a problem.
+
+| Angular Version | Package Version | Comment                    |
+| --------------- | --------------- | -------------------------- |
+| 17.x - 18.x     | 5.x             | drops IE support           |
+| <=18.x          | <=4.x           | supports Internet Explorer |
+| <=10.x          | <=3.x           | supports Internet Explorer |
+| <=9.x           | <=2.x           | supports Internet Explorer |
