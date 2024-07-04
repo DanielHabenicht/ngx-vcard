@@ -35,7 +35,7 @@ provide a PR. ;)
 
 ### Use as Directive
 
-[Look here for a Stackblitz Example](https://stackblitz.com/github/DanielHabenicht/ngx-vcard)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/DanielHabenicht/ngx-vcard?template=node&title=ngx-vcard%20Example)
 
 ```typescript
 /* example.component.ts */
@@ -75,7 +75,7 @@ export class AppComponent {
 
 ### Use as Formatter
 
-[Look here for a Stackblitz Example](https://stackblitz.com/github/DanielHabenicht/ngx-vcard)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/DanielHabenicht/ngx-vcard?template=node&title=ngx-vcard%20Example)
 
 ```typescript
 /* example.component.ts */

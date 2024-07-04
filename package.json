@@ -13,10 +13,9 @@
     "commit": "git-cz",
     "copy-license": "copyfiles ./LICENSE ./dist/ngx-vcard",
     "copy-readme": "copyfiles ./README.md ./dist/ngx-vcard",
-    "playwright": "playwright test",
+    "playwright": "npx puppeteer browsers install chrome && playwright test",
     "copy-files": "npm run copy-license && npm run copy-readme",
     "semantic-release": "semantic-release",
-    "postinstall": "npx puppeteer browsers install chrome",
     "format": "prettier -w ./"
   },
   "private": false,
