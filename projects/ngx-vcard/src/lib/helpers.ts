@@ -7,7 +7,7 @@ export function e(value: string | undefined): string {
       value = '' + value;
     }
 
-    return (
+    return encodeURIComponent(
       value
         // From https://datatracker.ietf.org/doc/html/rfc6350
         //  Some properties may contain one or more values delimited by a COMMA

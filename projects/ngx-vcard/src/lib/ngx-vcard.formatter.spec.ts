@@ -243,6 +243,90 @@ END:VCARD
     END:VCARD
     `);
   });
+
+  it('accented characters test', () => {
+    const vCard: VCard = {
+      version: '4.0',
+      name: { firstNames: 'Dênis', lastNames: 'Éclair' },
+      organization: 'Café du Monde',
+      title: 'Pâtissier',
+      email: ['denis.eclair@example.com'],
+      telephone: [
+        {
+          value: 'tel:+1-111-555-1212',
+          param: { type: ['work', 'voice'], value: 'uri' },
+        },
+      ],
+      address: [
+        {
+          value: {
+            label: '123 Rue de la Pâtisserie\nParis, France',
+            street: '123 Rue de la Pâtisserie',
+            locality: 'Paris',
+            postalCode: '75001',
+            region: 'Île-de-France',
+            countryName: 'France',
+          },
+          param: { type: ['work'], pref: 1 },
+        },
+      ],
+    };
+    expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
+      `BEGIN:VCARD
+VERSION:4.0
+FN:Dênis Éclair
+N:Éclair;Dênis;;;
+ORG:Café du Monde
+ADR;TYPE=work;PREF=1;LABEL="123 Rue de la Pâtisserie\\nParis\, France":;;123 Rue de la Pâtisserie;Paris;Île-de-France;75001;France
+TEL;VALUE=uri;TYPE="work,voice":tel:+1-111-555-1212
+EMAIL:denis.eclair@example.com
+TITLE:Pâtissier
+END:VCARD
+`,
+    );
+  });
+
+  it('Bulgarian characters test', () => {
+    const vCard: VCard = {
+      version: '4.0',
+      name: { firstNames: 'Иван', lastNames: 'Иванов' },
+      organization: 'Българска компания',
+      title: 'Мениджър',
+      email: ['ivan.ivanov@example.com'],
+      telephone: [
+        {
+          value: 'tel:+359-2-123-456',
+          param: { type: ['work', 'voice'], value: 'uri' },
+        },
+      ],
+      address: [
+        {
+          value: {
+            label: 'ул. Иван Вазов 1\nСофия, България',
+            street: 'ул. Иван Вазов 1',
+            locality: 'София',
+            postalCode: '1000',
+            region: 'София-град',
+            countryName: 'България',
+          },
+          param: { type: ['work'], pref: 1 },
+        },
+      ],
+    };
+    expect(VCardFormatter.getVCardAsString(vCard)).toEqual(
+      `BEGIN:VCARD
+VERSION:4.0
+FN:Иван Иванов
+N:Иванов;Иван;;;
+ORG:Българска компания
+ADR;TYPE=work;PREF=1;LABEL="ул. Иван Вазов 1\\nСофия\, България":;;ул. Иван Вазов 1;София;София-град;1000;България
+TEL;VALUE=uri;TYPE="work,voice":tel:+359-2-123-456
+EMAIL:ivan.ivanov@example.com
+TITLE:Мениджър
+END:VCARD
+`,
+    );
+  });
 });
 
 describe('regression tests', () => {
