@@ -35,7 +35,15 @@ provide a PR. ;)
 
 ### Use as Directive
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/DanielHabenicht/ngx-vcard?template=node&title=ngx-vcard%20Example)
+#### ☁ Try it in the Cloud
+[![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://vscode.dev/github/DanielHabenicht/ngx-vcard)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in-GitHub%20Codespaces-blue?logo=github)](https://codespaces.new/DanielHabenicht/ngx-vcard)
+[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/DanielHabenicht/ngx-vcard)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/DanielHabenicht/ngx-vcard)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/DanielHabenicht/ngx-vcard?template=node&title=ngx-vcard%20Example)
+[![Open in Repl.it](https://replit.com/badge/github/DanielHabenicht/ngx-vcard)](https://replit.com/github/DanielHabenicht/ngx-vcard)
+[![Open in Glitch](https://img.shields.io/badge/Open%20in-Glitch-blue?logo=glitch)](https://glitch.com/edit/#!/import/github/DanielHabenicht/ngx-vcard)
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/DanielHabenicht/ngx-vcard)
 
 ```typescript
 /* example.component.ts */
