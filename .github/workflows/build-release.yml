@@ -19,6 +19,10 @@ jobs:
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
           cache: npm
 
+        # Fix for https://github.com/puppeteer/puppeteer/issues/13595
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+
       - run: 'npm ci'
 
       - run: 'npm run build:lib'
