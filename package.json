@@ -40,7 +40,7 @@
     "@angular/compiler-cli": "17.3.11",
     "@angular/language-service": "17.3.11",
     "@playwright/test": "^1.45.0",
-    "@types/jasmine": "3.10.18",
+    "@types/jasmine": "5.1.7",
     "@types/jasminewd2": "2.0.13",
     "@types/node": "16.18.82",
     "codelyzer": "6.0.2",
