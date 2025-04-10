@@ -48,7 +48,7 @@ jobs:
 
       - name: Delete comment
         if: always() && (steps.fc.outputs.comment-id != 0) && (steps.title-check.outputs.error_message == null)
-        uses: actions/github-script@v3
+        uses: actions/github-script@v7
         with:
           script: |
             github.issues.deleteComment({
