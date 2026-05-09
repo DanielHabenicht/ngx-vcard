@@ -22,7 +22,7 @@
   "dependencies": {
     "@angular-devkit/core": "17.3.17",
     "@angular/animations": "17.3.11",
-    "@angular/common": "17.3.11",
+    "@angular/common": "19.2.16",
     "@angular/compiler": "17.3.11",
     "@angular/core": "17.3.11",
     "@angular/forms": "17.3.11",
